@@ -38,7 +38,7 @@ steps:
     displayName: PowerShell Core - Install Pester
     condition: succeededOrFailed()
 
- - script: |
+  - script: |
       "%PROGRAMFILES%\PowerShell\pwsh.exe" -Command "& {Invoke-Pester .\Tests\sthVault.tests.ps1 -OutputFile .\testResultsCore.xml -OutputFormat NUnitXml -CodeCoverage .\sthVaultFunctions.ps1 -CodeCoverageOutputFile .\codeCoverageCore.xml -CodeCoverageOutputFileFormat JaCoCo}"
     workingDirectory: #
     name: PSCoreTest
