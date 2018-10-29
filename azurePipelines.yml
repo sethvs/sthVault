@@ -1,0 +1,34 @@
+name: PR-$(System.PullRequest.PullRequestNumber)-$(Date:yyyyMMdd)$(Rev:.rr)
+queue:
+  name: Hosted VS2017
+
+resources:
+- repo: self
+  clean: true
+
+steps:
+  - powershell: |
+      Install-Module -Name Pester -MinimumVersion 4.4.2 -Repository PSGallery -SkipPublisherCheck -Force
+    name: installPester
+    displayName: Install Pester
+    condition: succeededOrFailed()
+
+  - powershell: |
+      Invoke-Pester .\Tests\sthVault.tests.ps1 -OutputFile .\testResults.xml -OutputFormat NUnitXml -CodeCoverage .\sthVaultFunctions.ps1 -CodeCoverageOutputFile .\codeCoverage.xml -CodeCoverageOutputFileFormat JaCoCo
+    name: invokePester
+    displayName: Testing with Pester
+    condition: succeededOrFailed()
+
+  - task: PublishTestResults@2
+    inputs:
+      testRunner: 'NUnit'
+      testResultsFiles: 'testResults.xml' 
+      searchFolder: '$(System.DefaultWorkingDirectory)'
+      testRunTitle: Pester - Windows PowerShell
+    condition: succeededOrFailed()
+
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'JaCoCo'
+      summaryFileLocation: $(System.DefaultWorkingDirectory)/codeCoverage.xml
+    condition: succeededOrFailed()
