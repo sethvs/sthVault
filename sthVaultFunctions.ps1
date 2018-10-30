@@ -13,19 +13,23 @@ function New-sthVault
         [HashTable]$Credential
     )
 
-
     $Settings = [ordered]@{}
 
     foreach ($Setting in $PlainText.Keys)
     {
         $Settings.Add($Setting, $PlainText.$Setting)
-        Write-Verbose -Message $Setting
     }
 
     foreach ($Setting in $SecureString.Keys)
     {
-        $Settings.Add($Setting, $(ConvertTo-SecureString -String $($SecureString.$Setting) -AsPlainText -Force))
-        Write-Verbose -Message $Setting
+        if ($SecureString.$Setting.GetType().FullName -eq 'System.Security.SecureString')
+        {
+            $Settings.Add($Setting, $SecureString.$Setting)
+        }
+        else
+        {
+            $Settings.Add($Setting, $(ConvertTo-SecureString -String $($SecureString.$Setting) -AsPlainText -Force))
+        }
     }
 
     foreach ($Setting in $Credential.Keys)
@@ -38,7 +42,6 @@ function New-sthVault
         {
             inPSCredentialError -Value $Credential.$Setting
         }
-        Write-Verbose -Message $Setting
     }
 
     if ($Settings.Count)
@@ -139,7 +142,7 @@ function Set-sthVaultProperty
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
     Param(
-        [Parameter(Mandatory,ParameterSetName='VaultName')]
+        [Parameter(Mandatory,Position=0,ParameterSetName='VaultName')]
         [string]$VaultName,
         [Parameter(ParameterSetName='VaultFilePath')]
         [string]$VaultFilePath,
@@ -173,11 +176,25 @@ function Set-sthVaultProperty
     {
         if ($Settings.Contains($Setting))
         {
-            $Settings.$Setting = $SecureString.$Setting
+            if ($SecureString.$Setting.GetType().FullName -eq 'System.Security.SecureString')
+            {
+                $Settings.$Setting = $SecureString.$Setting
+            }
+            else
+            {
+                $Settings.$Setting = ConvertTo-SecureString -String $($SecureString.$Setting) -AsPlainText -Force
+            }
         }
         else
         {
-            $Settings.Add($Setting, $(ConvertTo-SecureString -String $($SecureString.$Setting) -AsPlainText -Force))
+            if ($SecureString.$Setting.GetType().FullName -eq 'System.Security.SecureString')
+            {
+                $Settings.Add($Setting, $SecureString.$Setting)
+            }
+            else
+            {
+                $Settings.Add($Setting, $(ConvertTo-SecureString -String $($SecureString.$Setting) -AsPlainText -Force))
+            }
         }
     }
 
