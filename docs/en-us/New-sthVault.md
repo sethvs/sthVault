@@ -29,7 +29,7 @@ New-sthVault function creates the vault with the properties specified.
 
 Vault is an .xml file, containing Name-Vaule pairs.
 
-The vaults can be useful when you need to store some values, be it in the plain text, SecureStrings or PSCredential object and then use them in automation scripts and workflows.
+The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.
 
 You can create the vault by using the **-VaultName** or **-VaultFilePath** parameter. 
 
@@ -44,7 +44,6 @@ Each of these parameters accepts **HashTable** as an argument, which contains th
 
 For example:
 
-```powershell
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 $SecureStringTwo = ConvertTo-SecureString -String 'Two' -AsPlainText -Force
@@ -55,25 +54,20 @@ $CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentL
 $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
-```
 
 You can get the vault's content by using the `Get-sthVault` cmdlet.
 
 For example:
 
-```powershell
-$VaultContent = Get-sthVault -VaultName TheVault
-```
+$Settings = Get-sthVault -VaultName TheVault
 
 Then you can use it in automation scripts and workflows.
 
 For example:
 
-```powershell
-Get-SomeInfo -UserName $VaultContent.PlainTextOne -PasswordAsSecureString $VaultContent.SecureStringOne
-ConnectTo-Something -Credential $VaultContent.CredentialOne
-Get-SomeData -Credential $VaultContent.CredentialTwo
-```
+Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne
+ConnectTo-Something -Credential $Settings.CredentialOne
+Get-SomeData -Credential $Settings.CredentialTwo
 
 **SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 

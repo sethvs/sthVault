@@ -29,13 +29,47 @@ Get-sthVault function gets existing vaults or specified vault and displays its c
 
 Vault is an .xml file, containing Name-Vaule pairs.
 
-It can be created by the New-sthVault cmdlet.
+The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.
 
-You can use the New-sthVault with -VaultName or -VaultFilePath parameter.
--VaultName parameter creates an .xml file with the specified name under the Vaults folder in the module's directory.
--VaultFilePath parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.
+You can create the vault by using the `New-sthVault` function with the **-VaultName** or **-VaultFilePath** parameter. 
 
-Values can be of three types: PlainText, SecureString, and Credential.
+**-VaultName** parameter creates an .xml file with the specified name under the **Vaults** folder in the module's directory.
+
+**-VaultFilePath** parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.
+
+Values can be of three types: **PlainText**, **SecureString**, and **Credential**.
+
+You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
+Each of these parameters accepts **HashTable** as an argument, which contains the Name-Vaule pairs.
+
+For example:
+
+$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+
+$SecureStringTwo = ConvertTo-SecureString -String 'Two' -AsPlainText -Force
+$SecureString = @{SecureStringOne = 'One'; SecureStringTwo = $SecureStringTwo}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+
+New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
+
+You can get the vault's content by using the `Get-sthVault` cmdlet.
+
+For example:
+
+$Settings = Get-sthVault -VaultName TheVault
+
+Then you can use it in automation scripts and workflows.
+
+For example:
+
+Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne
+ConnectTo-Something -Credential $Settings.CredentialOne
+Get-SomeData -Credential $Settings.CredentialTwo
+
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## EXAMPLES
 
