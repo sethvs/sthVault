@@ -4,7 +4,7 @@ function New-sthVault
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
     Param(
-        [Parameter(Mandatory,ParameterSetName='VaultName')]
+        [Parameter(Mandatory,Position=0,ParameterSetName='VaultName')]
         [string]$VaultName,
         [Parameter(ParameterSetName='VaultFilePath')]
         [string]$VaultFilePath,
@@ -118,7 +118,7 @@ function Get-sthVault
 function Remove-sthVault
 {
     Param(
-        [Parameter(Mandatory,ParameterSetName='VaultName')]
+        [Parameter(Mandatory,Position=0,ParameterSetName='VaultName')]
         [string]$VaultName,
         [Parameter(ParameterSetName='VaultFilePath')]
         [string]$VaultFilePath
@@ -233,7 +233,7 @@ function Set-sthVaultProperty
 function Remove-sthVaultProperty
 {
     Param(
-        [Parameter(Mandatory,ParameterSetName='VaultName')]
+        [Parameter(Mandatory,Position=0,ParameterSetName='VaultName')]
         [string]$VaultName,
         [Parameter(ParameterSetName='VaultFilePath')]
         [string]$VaultFilePath,
