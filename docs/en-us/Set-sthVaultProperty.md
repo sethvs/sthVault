@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### VaultName (Default)
 ```
-Set-sthVaultProperty -VaultName <String> [-PlainText <Hashtable>] [-SecureString <Hashtable>]
+Set-sthVaultProperty [-VaultName] <String> [-PlainText <Hashtable>] [-SecureString <Hashtable>]
  [-Credential <Hashtable>] [<CommonParameters>]
 ```
 
@@ -107,7 +107,7 @@ Parameter Sets: VaultName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

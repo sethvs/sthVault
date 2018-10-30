@@ -14,7 +14,7 @@ Creates the vault.
 
 ### VaultName (Default)
 ```
-New-sthVault -VaultName <String> [-PlainText <Hashtable>] [-SecureString <Hashtable>] [-Credential <Hashtable>]
+New-sthVault [-VaultName] <String> [-PlainText <Hashtable>] [-SecureString <Hashtable>] [-Credential <Hashtable>]
  [<CommonParameters>]
 ```
 
@@ -163,7 +163,7 @@ Parameter Sets: VaultName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ### VaultName
 ```
-Remove-sthVaultProperty -VaultName <String> [-PropertyName <String[]>] [<CommonParameters>]
+Remove-sthVaultProperty [-VaultName] <String> [-PropertyName <String[]>] [<CommonParameters>]
 ```
 
 ### VaultFilePath
@@ -75,7 +75,7 @@ Parameter Sets: VaultName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
