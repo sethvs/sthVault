@@ -71,29 +71,35 @@ Get-SomeData -Credential $Settings.CredentialTwo
 
 **SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
-
-<!-- Since SecureString uses DPAPI, if you create the vault containing SecureStrings or Credentials, it can only be used on the computer it was created on and by the user account that created it. -->
-
-<!-- By default password is encrypted by using DPAPI, which means that the profile can be used only on the computer it was created on, and under user account, that created it. -->
-
-
-## EXAMPLES
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
-### -Credential
-{{Fill Credential Description}}
+### -VaultName
+Specifies vault name.
+
+Function creates the vault with the name specified under the **Vaults** folder in the module's directory.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
+Type: String
+Parameter Sets: VaultName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultFilePath
+Specifies vault file path.
+
+This parameter allows you to create vault file in the location other then the  **Vaults** folder in the module's directory.
+
+Value should contain path and file name with .xml extension.
+
+```yaml
+Type: String
+Parameter Sets: VaultFilePath
 Aliases:
 
 Required: False
@@ -104,7 +110,13 @@ Accept wildcard characters: False
 ```
 
 ### -PlainText
-{{Fill PlainText Description}}
+Specifies plain text values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+For example:
+
+New-sthVault SomeVault -PlainText @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 ```yaml
 Type: Hashtable
@@ -119,7 +131,18 @@ Accept wildcard characters: False
 ```
 
 ### -SecureString
-{{Fill SecureString Description}}
+Specifies SecureString values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+Hashtable values can be SecureStrings objects, or plain text.
+
+If value is in plain text, it will be converted to SecureString.
+
+For example:
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
 
 ```yaml
 Type: Hashtable
@@ -133,31 +156,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultFilePath
-{{Fill VaultFilePath Description}}
+### -Credential
+Specifies PSCredential values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+Hashtable values should be PSCredential objects.
+
+For example:
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
+
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
 
 ```yaml
-Type: String
-Parameter Sets: VaultFilePath
+Type: Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultName
-{{Fill VaultName Description}}
-
-```yaml
-Type: String
-Parameter Sets: VaultName
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -175,5 +194,43 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Object
 ## NOTES
+
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+
+New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+```
+
+Command creates the vault with the name **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
+
+The vault is created under the **Vaults** folder in the module's directory.
+
+### Example 2
+```powershell
+$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+
+New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+```
+
+Command creates the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
 
 ## RELATED LINKS

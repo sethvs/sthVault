@@ -71,21 +71,14 @@ Get-SomeData -Credential $Settings.CredentialTwo
 
 **SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
-## EXAMPLES
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
-
 ## PARAMETERS
 
 ### -VaultName
-Sepcifies vault name.
+Specifies vault name.
 
-This is the vault, created by the New-sthVault cmdlet with the -VaultName parameter.
+This is the vault, created by the `New-sthVault` cmdlet with the **-VaultName** parameter.
+
+If omitted, returns all the vault names from the **Vaults** folder in the module's directory.
 
 ```yaml
 Type: String
@@ -102,7 +95,7 @@ Accept wildcard characters: False
 ### -VaultFilePath
 Specifies vault file path.
 
-It is the path to .xml file, created by New-sthVault cmdlet with the -VaultFilePath parameter.
+It is the path to .xml file, created by the `New-sthVault` cmdlet with the **-VaultFilePath** parameter.
 
 ```yaml
 Type: String
@@ -116,23 +109,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertyName
-{{Fill PropertyName Description}}
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PropertyType
-{{Fill PropertyType Description}}
+Specifies property types to get from vault.
+
+Accepted values are:
+
+- PlainText
+- SecureString
+- Credential
+
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
 
 ```yaml
 Type: String[]
@@ -147,8 +134,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PropertyName
+Specifies the property names to get from vault.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ShowSecureData
-{{Fill ShowSecureData Description}}
+Specifies that encrypted data, like the **SecureString** or **Credential** values should be returned in plain text.
+
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
 
 ```yaml
 Type: SwitchParameter
@@ -174,5 +179,103 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Object
 ## NOTES
+
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
+## EXAMPLES
+
+### Example 1
+```powershell
+PS> Get-sthVault
+
+SomeVault
+AnotherVault
+```
+
+Command returns previously created vault's names from the **Vaults** folder in the module's directory.
+
+### Example 2
+```powershell
+PS> Get-sthVault -VaultName TheVault
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                System.Security.SecureString
+SecureStringTwo                System.Security.SecureString
+CredentialOne                  System.Management.Automation.PSCredential
+CredentialTwo                  System.Management.Automation.PSCredential
+```
+
+Command returns data from the previously created vault named **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
+
+### Example 3
+```powershell
+PS> Get-sthVault -VaultName TheVault -ShowSecureData 
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                One
+SecureStringTwo                Two
+CredentialOne                  {One, OnePassword}
+CredentialTwo                  {Two, TwoPassword}
+```
+
+Command returns data from the previously created vault named **TheVault**, showing encrypted values like **SecureStrings** and **Credentials** in plain text.
+
+### Example 4
+```powershell
+PS> Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
+
+Name                           Value
+----                           -----
+PlainText                      SomeValue
+SecureString                   System.Security.SecureString
+Credential                     System.Management.Automation.PSCredential
+```
+
+Command returns data from the previously created vault file **C:\Vaults\SomeVault.xml**.
+
+### Example 5
+```powershell
+PS> Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                System.Security.SecureString
+SecureStringTwo                System.Security.SecureString
+```
+
+Command returns data from the previously created vault named **TheVault**, showing only properties with **PlainText** and **SecureString** values.
+
+### Example 5
+```powershell
+PS> Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+SecureStringTwo                System.Security.SecureString
+```
+
+Command returns data from the previously created vault named **TheVault**, showing only **PlainTextOne** and **SecureStringTwo** properties.
+
+### Example 6
+```powershell
+Get-sthVault -VaultName $VaultName -PropertyName *One
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+SecureStringOne                System.Security.SecureString
+CredentialOne                  System.Management.Automation.PSCredential
+```
+
+Command returns data from the previously created vault named **TheVault**, showing only properties which names end with **One**.
 
 ## RELATED LINKS
