@@ -74,7 +74,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 ## PARAMETERS
 
 ### -VaultName
-Specifies vault name.
+Specifies the vault name.
 
 This is the vault, created by the `New-sthVault` cmdlet with the **-VaultName** parameter.
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultFilePath
-Specifies vault file path.
+Specifies the vault file path.
 
 It is the path to .xml file, created by the `New-sthVault` cmdlet with the **-VaultFilePath** parameter.
 
@@ -186,17 +186,17 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### Example 1
 ```powershell
-PS> Get-sthVault
+Get-sthVault
 
 SomeVault
 AnotherVault
 ```
 
-Command returns previously created vault's names from the **Vaults** folder in the module's directory.
+This command returns previously created vault's names from the **Vaults** folder in the module's directory.
 
 ### Example 2
 ```powershell
-PS> Get-sthVault -VaultName TheVault
+Get-sthVault -VaultName TheVault
 
 Name                           Value
 ----                           -----
@@ -208,11 +208,11 @@ CredentialOne                  System.Management.Automation.PSCredential
 CredentialTwo                  System.Management.Automation.PSCredential
 ```
 
-Command returns data from the previously created vault named **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
+This command returns data from the previously created vault named **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
 
 ### Example 3
 ```powershell
-PS> Get-sthVault -VaultName TheVault -ShowSecureData 
+Get-sthVault -VaultName TheVault -ShowSecureData 
 
 Name                           Value
 ----                           -----
@@ -224,11 +224,11 @@ CredentialOne                  {One, OnePassword}
 CredentialTwo                  {Two, TwoPassword}
 ```
 
-Command returns data from the previously created vault named **TheVault**, showing encrypted values like **SecureStrings** and **Credentials** in plain text.
+This command returns data from the previously created vault named **TheVault**, showing encrypted values like **SecureStrings** and **Credentials** in plain text.
 
 ### Example 4
 ```powershell
-PS> Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
+Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
 
 Name                           Value
 ----                           -----
@@ -237,11 +237,11 @@ SecureString                   System.Security.SecureString
 Credential                     System.Management.Automation.PSCredential
 ```
 
-Command returns data from the previously created vault file **C:\Vaults\SomeVault.xml**.
+This command returns data from the previously created vault file **C:\Vaults\SomeVault.xml**.
 
 ### Example 5
 ```powershell
-PS> Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
+Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
 
 Name                           Value
 ----                           -----
@@ -251,11 +251,11 @@ SecureStringOne                System.Security.SecureString
 SecureStringTwo                System.Security.SecureString
 ```
 
-Command returns data from the previously created vault named **TheVault**, showing only properties with **PlainText** and **SecureString** values.
+This command returns data from the previously created vault named **TheVault**, showing only properties with **PlainText** and **SecureString** values.
 
-### Example 5
+### Example 6
 ```powershell
-PS> Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
+Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
 
 Name                           Value
 ----                           -----
@@ -263,9 +263,9 @@ PlainTextOne                   One
 SecureStringTwo                System.Security.SecureString
 ```
 
-Command returns data from the previously created vault named **TheVault**, showing only **PlainTextOne** and **SecureStringTwo** properties.
+This command returns data from the previously created vault named **TheVault**, showing only **PlainTextOne** and **SecureStringTwo** properties.
 
-### Example 6
+### Example 7
 ```powershell
 Get-sthVault -VaultName $VaultName -PropertyName *One
 
@@ -276,6 +276,6 @@ SecureStringOne                System.Security.SecureString
 CredentialOne                  System.Management.Automation.PSCredential
 ```
 
-Command returns data from the previously created vault named **TheVault**, showing only properties which names end with **One**.
+This command returns data from the previously created vault named **TheVault**, showing only properties which names end with **One**.
 
 ## RELATED LINKS

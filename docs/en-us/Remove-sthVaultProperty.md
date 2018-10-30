@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-sthVaultProperty
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the vault property.
 
 ## SYNTAX
 
@@ -23,36 +23,33 @@ Remove-sthVaultProperty [-VaultFilePath <String>] [-PropertyName <String[]>] [<C
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
-
-## EXAMPLES
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+Remove-sthVaultProperty function removes the properties specified from the vault.
 
 ## PARAMETERS
 
-### -PropertyName
-{{Fill PropertyName Description}}
+### -VaultName
+Specifies the vault name.
+
+This is the vault, created by the `New-sthVault` cmdlet with the **-VaultName** parameter and located under the **Vaults** folder in the module's directory.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: String
+Parameter Sets: VaultName
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultFilePath
-{{Fill VaultFilePath Description}}
+Specifies vault file path.
+
+This parameter allows you to use the vault file in the location other then the **Vaults** folder in the module's directory.
+
+Value should contain path and file name with .xml extension.
 
 ```yaml
 Type: String
@@ -66,16 +63,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultName
-{{Fill VaultName Description}}
+### -PropertyName
+Specifies property names to remove fron the vault.
 
 ```yaml
-Type: String
-Parameter Sets: VaultName
+Type: String[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -93,5 +90,21 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Object
 ## NOTES
+
+## EXAMPLES
+
+### Example 1
+```powershell
+Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo
+```
+
+This command removes the **PropertyOne** and **PropertyTwo** properties from the vault **TheVault** located under the **Vaults** folder in the module's directory.
+
+### Example 2
+```powershell
+Remove-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PropertyName PropertyOne, PropertyTwo
+```
+
+This command removes the **PropertyOne** and **PropertyTwo** properties from the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
 
 ## RELATED LINKS

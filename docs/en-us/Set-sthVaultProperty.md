@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-sthVaultProperty
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds the new properties or changes values of the existing properties in the vault.
 
 ## SYNTAX
 
@@ -25,25 +25,42 @@ Set-sthVaultProperty [-VaultFilePath <String>] [-PlainText <Hashtable>] [-Secure
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.
 
-## EXAMPLES
+Properties can be of three types: **PlainText**, **SecureString**, and **Credential**.
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
+Each of these parameters accepts **HashTable** as an argument, which contains the Name-Vaule pairs.
 
 ## PARAMETERS
 
-### -Credential
-{{Fill Credential Description}}
+### -VaultName
+Specifies the vault name.
+
+This is the vault, created by the `New-sthVault` cmdlet with the **-VaultName** parameter and located under the **Vaults** folder in the module's directory.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
+Type: String
+Parameter Sets: VaultName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultFilePath
+Specifies vault file path.
+
+This parameter allows you to use the vault file in the location other then the **Vaults** folder in the module's directory.
+
+Value should contain path and file name with .xml extension.
+
+```yaml
+Type: String
+Parameter Sets: VaultFilePath
 Aliases:
 
 Required: False
@@ -54,7 +71,13 @@ Accept wildcard characters: False
 ```
 
 ### -PlainText
-{{Fill PlainText Description}}
+Specifies plain text values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+For example:
+
+Set-sthVaultProperty SomeVault -PlainText @{PlainTextOne = 'NewValue'; NewPlainTextProperty = 'NewPropertyValue'}
 
 ```yaml
 Type: Hashtable
@@ -69,7 +92,18 @@ Accept wildcard characters: False
 ```
 
 ### -SecureString
-{{Fill SecureString Description}}
+Specifies SecureString values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+Hashtable values can be SecureStrings objects, or plain text.
+
+If value is in plain text, it will be converted to SecureString.
+
+For example:
+
+$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}
 
 ```yaml
 Type: Hashtable
@@ -83,31 +117,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultFilePath
-{{Fill VaultFilePath Description}}
+### -Credential
+Specifies PSCredential values.
+
+Parameter value should be in the form of hashtable, that contains Name-Value pairs.
+
+Hashtable values should be PSCredential objects.
+
+For example:
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+$NewCredentialProperty = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewCredentialUserName', $(ConvertTo-SecureString -String 'NewCredentialPassword' -AsPlainText -Force)
+
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredentialProperty = $NewCredentialProperty}
 
 ```yaml
-Type: String
-Parameter Sets: VaultFilePath
+Type: Hashtable
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultName
-{{Fill VaultName Description}}
-
-```yaml
-Type: String
-Parameter Sets: VaultName
-Aliases:
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -125,5 +155,67 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Object
 ## NOTES
+
+## EXAMPLES
+
+### Example 1
+```powershell
+$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
+
+$SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
+$CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = $CredentialThree}
+
+Set-sthVaultProperty -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+
+Get-sthVault -VaultName TheVault -ShowSecureData
+
+Name                           Value
+----                           -----
+PlainTextOne                   1
+PlainTextThree                 Three
+PlainTextTwo                   Two
+SecureStringOne                1
+SecureStringThree              Three
+SecureStringTwo                Two
+CredentialOne                  {1, 1}
+CredentialThree                {Three, ThreePassword}
+CredentialTwo                  {Two, TwoPassword}
+```
+
+This command changes **PlainTextOne**, **SecureStringOne**, and **CredentialOne** properties and adds **PlainTextThree**, **SecureStringThree**, and **CredentialThree** properties to the vault.
+
+### Example 2
+```powershell
+$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
+
+$SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
+$CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = $CredentialThree}
+
+Set-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+
+Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -ShowSecureData
+
+Name                           Value
+----                           -----
+PlainTextOne                   1
+PlainTextThree                 Three
+PlainTextTwo                   Two
+SecureStringOne                1
+SecureStringThree              Three
+SecureStringTwo                Two
+CredentialOne                  {1, 1}
+CredentialThree                {Three, ThreePassword}
+CredentialTwo                  {Two, TwoPassword}
+```
+
+This command changes **PlainTextOne**, **SecureStringOne**, and **CredentialOne** properties and adds **PlainTextThree**, **SecureStringThree**, and **CredentialThree** properties to the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
 
 ## RELATED LINKS

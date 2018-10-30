@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-sthVault
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes the vault.
 
 ## SYNTAX
 
@@ -23,36 +23,18 @@ Remove-sthVault [-VaultFilePath <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Remove-sthVault function removes the vault specified.
 
-## EXAMPLES
+The **-VaultName** parameter removes the vault located under the **Vaults** folder in the module's directory.
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+The **-VaultFilePath** parameter allows you to remove the vault file in the location other then the  **Vaults** folder in the module's directory.
 
 ## PARAMETERS
 
-### -VaultFilePath
-{{Fill VaultFilePath Description}}
-
-```yaml
-Type: String
-Parameter Sets: VaultFilePath
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VaultName
-{{Fill VaultName Description}}
+Specifies vault name.
+
+Function removes the vault with the name specified under the **Vaults** folder in the module's directory.
 
 ```yaml
 Type: String
@@ -61,6 +43,25 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultFilePath
+Specifies vault file path.
+
+This parameter allows you to remove vault file in the location other then the  **Vaults** folder in the module's directory.
+
+Value should contain path and file name with .xml extension.
+
+```yaml
+Type: String
+Parameter Sets: VaultFilePath
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -78,5 +79,21 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Object
 ## NOTES
+
+## EXAMPLES
+
+### Example 1
+```powershell
+Remove-sthVault -VaultName TheVault
+```
+
+This command removes the vault with the name specified from the **Vaults** folder in the module's directory.
+
+### Example 2
+```powershell
+Remove-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
+```
+
+This command removes the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
 
 ## RELATED LINKS

@@ -74,7 +74,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 ## PARAMETERS
 
 ### -VaultName
-Specifies vault name.
+Specifies the vault name.
 
 Function creates the vault with the name specified under the **Vaults** folder in the module's directory.
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -VaultFilePath
-Specifies vault file path.
+Specifies the vault file path.
 
 This parameter allows you to create vault file in the location other then the  **Vaults** folder in the module's directory.
 
@@ -213,7 +213,7 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```
 
-Command creates the vault with the name **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
+This command creates the vault with the name **TheVault**, which contains two plaintext values - **PlainTextOne** and **PlainTextTwo**, two SecureString values - **SecureStringOne** and **SecureStringTwo**, and two Credential values - **CredentialOne** and **CredentialTwo**.
 
 The vault is created under the **Vaults** folder in the module's directory.
 
@@ -231,6 +231,6 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
 New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```
 
-Command creates the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
+This command creates the vault file with the name **SomeVault.xml** in the **C:\Vaults** directory.
 
 ## RELATED LINKS
