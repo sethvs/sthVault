@@ -225,6 +225,13 @@ Describe "sthVaultTests" {
                     }
                     TestPlainText
                 }
+
+                Context "Non-existent properties" {
+            
+                    It "Should return null when queriyng for non-existent properties" {
+                        Get-sthVault -VaultName $VaultName -PropertyName none | Should -BeNullOrEmpty
+                    }
+                }
             }
         }
 
@@ -420,6 +427,13 @@ Describe "sthVaultTests" {
                     }
                     TestPlainText
                 }
+
+                Context "Non-existent properties" {
+            
+                    It "Should return null when queriyng for non-existent properties" {
+                        Get-sthVault -VaultFilePath $VaultFilePath -PropertyName none | Should -BeNullOrEmpty
+                    }
+                }
             }
         }
 
@@ -487,6 +501,30 @@ Describe "sthVaultTests" {
                 Remove-sthVaultProperty -VaultFilePath $VaultFilePath -PropertyName CredentialFour
                 Get-sthVault -VaultFilePath $VaultFilePath -PropertyName CredentialFour | Should -BeNullOrEmpty
             }
+        }
+    }
+
+    Context "VaultName is a positional parameter" {
+
+        It "Should create the vault without using the -VaultName parameter name" {
+            New-sthVault $VaultName -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+            Get-sthVault | Should -Contain $VaultName
+        }
+
+        It "Should set the vault property without using the -VaultName parameter name" {
+            Set-sthVaultProperty $VaultName -PlainText @{PlainTextOne = 1}
+            $property = Get-sthVault $VaultName -PropertyName PlainTextOne
+            $property.PlainTextOne | Should -BeExactly 1
+        }
+
+        It "Should remove the property without using the -VaultName parameter name" {
+            Remove-sthVaultProperty $VaultName -PropertyName PlainTextThree
+            Get-sthVault $VaultName -PropertyName PlainTextThree | Should -BeNullOrEmpty
+        }
+
+        It "Should remove the vault without using the -VaultName parameter name" {
+            Remove-sthVault $VaultName
+            Get-sthVault | Should -Not -Contain $VaultName
         }
     }
 
