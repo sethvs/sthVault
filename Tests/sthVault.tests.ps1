@@ -5,8 +5,10 @@ Describe "sthVaultTests" {
     BeforeAll {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments","")]
         $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'; PlainTextThree = 3}
-        $SecureString = @{SecureStringOne = 'One'; SecureStringTwo = 'Two'; SecureStringThree = 3}
-    
+        
+        $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+        $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'; SecureStringThree = 3}
+
         $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
         $CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
         $CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
@@ -246,10 +248,24 @@ Describe "sthVaultTests" {
                 [System.Net.NetworkCredential]::new('something', $property.SecureStringOne).Password | Should -BeExactly 1
             }
 
+            It "Should change 'SecureStringTwo' property" {
+                $SecureStringTwo = ConvertTo-SecureString -String '2' -AsPlainText -Force
+                Set-sthVaultProperty -VaultName $VaultName -SecureString @{SecureStringTwo = $SecureStringTwo}
+                $property = Get-sthVault -VaultName $VaultName -PropertyName SecureStringTwo
+                [System.Net.NetworkCredential]::new('something', $property.SecureStringTwo).Password | Should -BeExactly 2
+            }
+
             It "Should add 'SecureStringFour' property" {
                 Set-sthVaultProperty -VaultName $VaultName -SecureString @{SecureStringFour = 'Four'}
                 $property = Get-sthVault -VaultName $VaultName -PropertyName SecureStringFour
                 [System.Net.NetworkCredential]::new('something', $property.SecureStringFour).Password | Should -BeExactly 'Four'
+            }
+
+            It "Should add 'SecureStringFive' property" {
+                $SecureStringFive = ConvertTo-SecureString -String 'Five' -AsPlainText -Force
+                Set-sthVaultProperty -VaultName $VaultName -SecureString @{SecureStringFive = $SecureStringFive}
+                $property = Get-sthVault -VaultName $VaultName -PropertyName SecureStringFive
+                [System.Net.NetworkCredential]::new('something', $property.SecureStringFive).Password | Should -BeExactly 'Five'
             }
 
             It "Should change 'CredentialOne' property" {
