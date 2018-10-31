@@ -45,7 +45,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
 
-Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.
 </maml:para>
     </maml:description>
     <command:syntax>
@@ -74,7 +74,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -104,7 +103,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -138,7 +136,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -168,7 +165,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -216,7 +212,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-          <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -241,7 +236,6 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>ShowSecureData</maml:name>
         <maml:Description>
           <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-          <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -273,7 +267,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -433,7 +427,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
 
-Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.
 </maml:para>
     </maml:description>
     <command:syntax>
@@ -675,7 +669,7 @@ New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialT
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -817,7 +811,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -976,7 +970,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1015,6 +1009,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
       <maml:para>Значения свойств хранилища могут быть трех типов: PlainText, SecureString и Credential.</maml:para>
       <maml:para>Вы можете использовать параметры -PlainText, -SecureString и -Credential для задания требуемых свойств.
 Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
+      <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1255,7 +1250,7 @@ Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; New
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

@@ -119,9 +119,6 @@ Accepted values are:
 - SecureString
 - Credential
 
-**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
-
-
 ```yaml
 Type: String[]
 Parameter Sets: (All)
@@ -152,9 +149,6 @@ Accept wildcard characters: False
 
 ### -ShowSecureData
 Specifies that encrypted data, like the **SecureString** or **Credential** values should be returned in plain text.
-
-**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
-
 
 ```yaml
 Type: SwitchParameter

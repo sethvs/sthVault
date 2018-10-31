@@ -32,6 +32,8 @@ Properties can be of three types: **PlainText**, **SecureString**, and **Credent
 You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
 Each of these parameters accepts **HashTable** as an argument, which contains the Name-Value pairs.
 
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
 ## PARAMETERS
 
 ### -VaultName

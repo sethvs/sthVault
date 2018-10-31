@@ -74,7 +74,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -104,7 +103,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
-            <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -138,7 +136,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -168,7 +165,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
-            <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -216,7 +212,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
 - PlainText
 - SecureString
 - Credential</maml:para>
-          <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -241,7 +236,6 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
         <maml:name>ShowSecureData</maml:name>
         <maml:Description>
           <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
-          <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1015,6 +1009,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
       <maml:para>Properties can be of three types: PlainText, SecureString, and Credential.</maml:para>
       <maml:para>You can use the -PlainText, -SecureString, and -Credential parameters to specify needed vaules.
 Each of these parameters accepts HashTable as an argument, which contains Name-Value pairs.</maml:para>
+      <maml:para>SecureString and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
