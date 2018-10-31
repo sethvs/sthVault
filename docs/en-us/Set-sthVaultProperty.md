@@ -157,6 +157,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ### System.Object
 ## NOTES
 
+**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+
 ## EXAMPLES
 
 ### Example 1
