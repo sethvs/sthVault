@@ -20,7 +20,7 @@
 
 Значения свойств хранилища могут быть трех типов: PlainText, SecureString, и Credential.
 Вы можете использовать параметры -PlainText, -SecureString, и -Credential для создания требуемых свойств.
-Каждый из этих параметров принимает в качестве значания хеш-таблицу (hashtable), содержащую пары Имя-Значение.
+Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.
 Например:
 
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
@@ -45,7 +45,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
 
-Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
 </maml:para>
     </maml:description>
     <command:syntax>
@@ -74,7 +74,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -104,7 +104,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-            <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -138,7 +138,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-            <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -168,7 +168,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
             <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-            <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+            <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -216,7 +216,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 - PlainText
 - SecureString
 - Credential</maml:para>
-          <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+          <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -241,7 +241,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>ShowSecureData</maml:name>
         <maml:Description>
           <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
-          <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+          <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -273,7 +273,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -398,26 +398,30 @@ CredentialOne                  System.Management.Automation.PSCredential</dev:co
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Функция New-sthVault создает хранилище с указанными свойствами.</maml:para>
-      <maml:para>Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.</maml:para>
-      <maml:para>Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.</maml:para>
-      <maml:para>Вы можете создать хранилище при помощи параметров -VaultName или -VaultFilePath .</maml:para>
-      <maml:para>Параметр -VaultName создает .xml файл с указанным именем в папке Vaults , расположенной в каталоге модуля.</maml:para>
-      <maml:para>Параметр -VaultFilePath принимает в качестве значения путь и имя файла, например C:\Folder\file.xml, и создает его в указанном расположении.</maml:para>
-      <maml:para>Значения свойств хранилища могут быть трех типов: PlainText , SecureString , и Credential .</maml:para>
-      <maml:para>Вы можете использовать параметры -PlainText , -SecureString , и -Credential для создания требуемых свойств. Каждый из этих параметров принимает в качестве значания хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
-      <maml:para>Например: </maml:para>
-      <maml:para>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
-      <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
-      <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force) $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
-      <maml:para>New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential</maml:para>
-      <maml:para>Вы можете получить содержимое хранилица при помощи команды `Get-sthVault`.</maml:para>
-      <maml:para>Например:</maml:para>
-      <maml:para>$Settings = Get-sthVault -VaultName TheVault</maml:para>
-      <maml:para>Затем, вы можете использовать его в скриптах автоматизации и рабочих процессах.</maml:para>
-      <maml:para>Например:</maml:para>
-      <maml:para>Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne ConnectTo-Something -Credential $Settings.CredentialOne Get-SomeData -Credential $Settings.CredentialTwo</maml:para>
-      <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+      <maml:para>Функция New-sthVault создает хранилище с указанными свойствами.
+
+Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
+Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
+Вы можете создать хранилище при помощи параметров -VaultName или -VaultFilePath.
+Параметр -VaultName создает .xml файл с указанным именем в папке Vaults, расположенной в каталоге модуля.
+Параметр -VaultFilePath принимает в качестве значения путь и имя файла, например C:\Folder\file.xml, и создает его в указанном расположении.
+
+Значения свойств хранилища могут быть трех типов: PlainText, SecureString, и Credential.
+Вы можете использовать параметры -PlainText, -SecureString и -Credential для создания требуемых свойств.
+Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.
+Например:
+$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force) $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
+New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
+Вы можете получить содержимое хранилица при помощи команды `Get-sthVault`.
+Например:
+$Settings = Get-sthVault -VaultName TheVault
+Затем, вы можете использовать его в скриптах автоматизации и рабочих процессах.
+Например:
+Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne ConnectTo-Something -Credential $Settings.CredentialOne Get-SomeData -Credential $Settings.CredentialTwo
+Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -655,7 +659,7 @@ CredentialOne                  System.Management.Automation.PSCredential</dev:co
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -793,7 +797,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -948,7 +952,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -981,7 +985,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     <maml:description>
       <maml:para>Функция Set-sthVaultProperty добавляет новые свойства в указанное хранилище и изменияет значения существующих.</maml:para>
       <maml:para>Значения свойств хранилища могут быть трех типов: PlainText , SecureString , и Credential .</maml:para>
-      <maml:para>Вы можете использовать параметры -PlainText , -SecureString , и -Credential для задания требуемых свойств. Каждый из этих параметров принимает в качестве значания хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
+      <maml:para>Вы можете использовать параметры -PlainText , -SecureString , и -Credential для задания требуемых свойств. Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1219,7 +1223,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:returnValues>
     <maml:alertSet>
       <maml:alert>
-        <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
+        <maml:para>Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
