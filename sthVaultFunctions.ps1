@@ -38,6 +38,11 @@ function New-sthVault
         {
             $Settings.Add($Setting, $Credential.$Setting)
         }
+        elseif ($Credential.$Setting.GetType().BaseType.FullName -eq 'System.Array' -and $Credential.$Setting.Count -eq 2)
+        {
+            $PSCredentialObject = New-Object System.Management.Automation.PSCredential -ArgumentList $Credential.$Setting[0], $(ConvertTo-SecureString -String $Credential.$Setting[1] -AsPlainText -Force)
+            $Settings.Add($Setting, $PSCredentialObject)
+        }
         else
         {
             inPSCredentialError -Value $Credential.$Setting
@@ -211,6 +216,19 @@ function Set-sthVaultProperty
                 $Settings.Add($Setting, $Credential.$Setting)
             }
         }
+        elseif ($Credential.$Setting.GetType().BaseType.FullName -eq 'System.Array' -and $Credential.$Setting.Count -eq 2)
+        {
+            $PSCredentialObject = New-Object System.Management.Automation.PSCredential -ArgumentList $Credential.$Setting[0], $(ConvertTo-SecureString -String $Credential.$Setting[1] -AsPlainText -Force)
+
+            if ($Settings.Contains($Setting))
+            {
+                $Settings.$Setting = $PSCredentialObject
+            }
+            else
+            {
+                $Settings.Add($Setting, $PSCredentialObject)
+            }
+        }
         else
         {
             inPSCredentialError -Value $Credential.$Setting
@@ -353,7 +371,7 @@ function inPSCredentialError
         [string]$Value
     )
 
-    $Exception = [System.ArgumentException]::new("`"$Value`" is not a PSCredential object")
+    $Exception = [System.ArgumentException]::new("Value (`"$Value`") is wrong. The value should be a PSCredential object or an array of two elements.")
     $ErrorId = 'ArgumentTypeError'
     $ErrorCategory = [System.Management.Automation.ErrorCategory]::InvalidArgument
 
