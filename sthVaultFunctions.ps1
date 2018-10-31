@@ -1,5 +1,6 @@
 $VaultDirectory = 'Vaults'
 
+# .externalhelp sthVault.help.xml
 function New-sthVault
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
@@ -62,6 +63,7 @@ function New-sthVault
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Get-sthVault
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
@@ -120,6 +122,7 @@ function Get-sthVault
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Remove-sthVault
 {
     Param(
@@ -143,6 +146,7 @@ function Remove-sthVault
     Remove-Item -Path $Path
 }
 
+# .externalhelp sthVault.help.xml
 function Set-sthVaultProperty
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
@@ -248,6 +252,7 @@ function Set-sthVaultProperty
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Remove-sthVaultProperty
 {
     Param(

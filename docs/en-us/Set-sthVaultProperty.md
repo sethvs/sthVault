@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-sthVaultProperty
 
 ## SYNOPSIS
-Adds the new properties or changes values of the existing properties in the vault.
+Adds new properties or changes values of the existing properties in the vault.
 
 ## SYNTAX
 
@@ -25,12 +25,14 @@ Set-sthVaultProperty [-VaultFilePath <String>] [-PlainText <Hashtable>] [-Secure
 ```
 
 ## DESCRIPTION
-Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.
+Set-sthVaultProperty function adds new properties or changes values of the existing properties in the vault.
 
 Properties can be of three types: **PlainText**, **SecureString**, and **Credential**.
 
 You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
-Each of these parameters accepts **HashTable** as an argument, which contains the Name-Vaule pairs.
+Each of these parameters accepts **HashTable** as an argument, which contains the Name-Value pairs.
+
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## PARAMETERS
 
@@ -157,7 +159,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ### System.Object
 ## NOTES
 
-**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## EXAMPLES
 

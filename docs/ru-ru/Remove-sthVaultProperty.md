@@ -31,7 +31,7 @@ Remove-sthVaultProperty [-VaultFilePath <String>] [-PropertyName <String[]>] [<C
 
 Указывает имя хранилища.
 
-Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром **-VaultName**, находящего в папке **Vaults**, расположенной в каталоге модуля.
+Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром **-VaultName**, находящегося в папке **Vaults**, расположенной в каталоге модуля.
 
 ```yaml
 Type: String
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ### System.Object
 ## NOTES
 
-Объекты **SecureStrings** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты **SecureString** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.
 
 ## EXAMPLES
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo
 ```
 
-Команда удаляет свойства **PropertyOne** и **PropertyTwo** из хранилища с именем **TheVault**, находящего в папке **Vaults**, расположенной в каталоге модуля.
+Команда удаляет свойства **PropertyOne** и **PropertyTwo** из хранилища с именем **TheVault**, находящегося в папке **Vaults**, расположенной в каталоге модуля.
 
 ### Example 2
 ```powershell

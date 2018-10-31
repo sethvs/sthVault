@@ -23,7 +23,7 @@ Remove-sthVaultProperty [-VaultFilePath <String>] [-PropertyName <String[]>] [<C
 ```
 
 ## DESCRIPTION
-Remove-sthVaultProperty function removes the properties specified from the vault.
+Remove-sthVaultProperty function removes specified properties from the vault.
 
 ## PARAMETERS
 
@@ -91,7 +91,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ### System.Object
 ## NOTES
 
-**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## EXAMPLES
 

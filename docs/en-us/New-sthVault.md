@@ -27,7 +27,7 @@ New-sthVault [-VaultFilePath <String>] [-PlainText <Hashtable>] [-SecureString <
 ## DESCRIPTION
 New-sthVault function creates the vault with the properties specified.
 
-Vault is an .xml file, containing Name-Vaule pairs.
+Vault is an .xml file, containing Name-Value pairs.
 
 The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.
 
@@ -40,7 +40,7 @@ You can create the vault by using the **-VaultName** or **-VaultFilePath** param
 Values can be of three types: **PlainText**, **SecureString**, and **Credential**.
 
 You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
-Each of these parameters accepts **HashTable** as an argument, which contains the Name-Vaule pairs.
+Each of these parameters accepts **HashTable** as an argument, which contains the Name-Value pairs.
 
 For example:
 
@@ -68,7 +68,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
 
-**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## PARAMETERS
 
@@ -195,7 +195,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ### System.Object
 ## NOTES
 
-**SecureStrings** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
+**SecureString** and **PSCredential** objects use DPAPI, which means that the vault, containing **SecureStrings** or **PSCredentials** can only be used on the computer it was created on, and under the user account, that created it.
 
 ## EXAMPLES
 

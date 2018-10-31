@@ -26,9 +26,9 @@ New-sthVault [-VaultFilePath <String>] [-PlainText <Hashtable>] [-SecureString <
 ## DESCRIPTION
 Функция New-sthVault создает хранилище с указанными свойствами.
 
-Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
+Хранилище (Vault) представляет из себя .xml файл, содержащий пары Имя-Значение.
 
-Хранилища могут быть полезными если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
+Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
 
 Вы можете создать хранилище при помощи параметров **-VaultName** или **-VaultFilePath**.
 
@@ -39,7 +39,7 @@ New-sthVault [-VaultFilePath <String>] [-PlainText <Hashtable>] [-SecureString <
 Значения свойств хранилища могут быть трех типов: **PlainText**, **SecureString**, и **Credential**.
 
 Вы можете использовать параметры **-PlainText**, **-SecureString**, и **-Credential** для создания требуемых свойств.
-Каждый из этих параметров принимает в качестве значания хеш-таблицу (hashtable), содержащую пары Имя-Значение.
+Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.
 
 Например: 
 
@@ -67,7 +67,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
 
-Объекты **SecureStrings** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты **SecureString** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.
 
 ## PARAMETERS
 
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ### System.Object
 ## NOTES
 
-Объекты **SecureStrings** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
+Объекты **SecureString** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано и только под той пользовательской учетной записью, под которой оно было создано.
 
 ## EXAMPLES
 
@@ -211,7 +211,7 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```
 
-Команда создает хранилища с именем **TheVault**, состоящее из двух свойств, сохраненных открытым текстом - **PlainTextOne** и **PlainTextTwo**, двух объектов SecureString -  **SecureStringOne** и **SecureStringTwo**, и двух объектов PSCredential - **CredentialOne** and **CredentialTwo**.
+Команда создает хранилища с именем **TheVault**, состоящее из двух свойств, сохраненных открытым текстом - **PlainTextOne** и **PlainTextTwo**, двух объектов SecureString -  **SecureStringOne** и **SecureStringTwo** и двух объектов PSCredential - **CredentialOne** and **CredentialTwo**.
 
 Хранилище будет создано в папке **Vaults**, расположенной в каталоге модуля.
 
