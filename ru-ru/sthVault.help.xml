@@ -12,7 +12,7 @@
     <maml:description>
       <maml:para>Функция Get-sthVault отображает список существующих хранилищ или содержимое указанного хранилища.
 
-Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
+Хранилище (Vault) представляет из себя .xml файл, содержащий пары Имя-Значение.
 Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
 Вы можете создать хранилище при помощи команды `New-sthVault` с параметром -VaultName или -VaultFilePath.
 Параметр -VaultName создает .xml файл с указанным именем в папке Vaults, расположенной в каталоге модуля.
@@ -400,7 +400,7 @@ CredentialOne                  System.Management.Automation.PSCredential</dev:co
     <maml:description>
       <maml:para>Функция New-sthVault создает хранилище с указанными свойствами.
 
-Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
+Хранилище (Vault) представляет из себя .xml файл, содержащий пары Имя-Значение.
 Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
 Вы можете создать хранилище при помощи параметров -VaultName или -VaultFilePath.
 Параметр -VaultName создает .xml файл с указанным именем в папке Vaults, расположенной в каталоге модуля.
@@ -410,16 +410,29 @@ CredentialOne                  System.Management.Automation.PSCredential</dev:co
 Вы можете использовать параметры -PlainText, -SecureString и -Credential для создания требуемых свойств.
 Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.
 Например:
+
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
-$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
-$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force) $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
+
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
+
 Вы можете получить содержимое хранилица при помощи команды `Get-sthVault`.
 Например:
+
 $Settings = Get-sthVault -VaultName TheVault
+
 Затем, вы можете использовать его в скриптах автоматизации и рабочих процессах.
 Например:
-Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne ConnectTo-Something -Credential $Settings.CredentialOne Get-SomeData -Credential $Settings.CredentialTwo
+
+Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne
+ConnectTo-Something -Credential $Settings.CredentialOne
+Get-SomeData -Credential $Settings.CredentialTwo
+
 Объекты SecureString и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
 </maml:para>
     </maml:description>
@@ -430,7 +443,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Функция создает хранилище с указанным именем в папке Vaults , расположенной в каталоге модуля.</maml:para>
+            <maml:para>Функция создает хранилище с указанным именем в папке Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -462,7 +475,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
             <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
             <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -479,8 +493,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
             <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -529,7 +543,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
             <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
             <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -546,8 +561,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
             <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -563,7 +578,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Функция создает хранилище с указанным именем в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Функция создает хранилище с указанным именем в папке Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -609,7 +624,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
           <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
           <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
           <maml:para>Например:</maml:para>
-          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -626,8 +642,8 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
           <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
           <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
           <maml:para>Например:</maml:para>
-          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-          <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -664,7 +680,7 @@ Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Пример 1: Создание хранилища</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
@@ -675,12 +691,14 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
         <dev:remarks>
-          <maml:para>Команда создает хранилища с именем TheVault , состоящее из двух свойств, сохраненных открытым текстом - PlainTextOne и PlainTextTwo , двух объектов SecureString - SecureStringOne и SecureStringTwo , и двух объектов PSCredential - CredentialOne and CredentialTwo .</maml:para>
-          <maml:para>Хранилище будет создано в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Команда создает хранилища с именем TheVault, состоящее из двух свойств, сохраненных открытым текстом - PlainTextOne и PlainTextTwo, двух объектов SecureString - SecureStringOne и SecureStringTwo и двух объектов PSCredential - CredentialOne and CredentialTwo.</maml:para>
+          <maml:para>Хранилище будет создано в папке Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Пример 2: Создание хранилища с указанием пути и имени файла</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
@@ -691,7 +709,9 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 
 New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
         <dev:remarks>
-          <maml:para>Команда создает файл хранилища с именем SomeVault.xml , расположенный в каталоге C:\Vaults .</maml:para>
+          <maml:para>Команда создает файл хранилища с именем SomeVault.xml, расположенный в каталоге C:\Vaults.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

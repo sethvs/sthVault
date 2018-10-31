@@ -475,7 +475,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
             <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
             <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -492,8 +493,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
             <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -542,7 +543,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
             <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
             <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -559,8 +561,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
             <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -622,7 +624,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
           <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
           <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
           <maml:para>For example:</maml:para>
-          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -639,8 +642,8 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
           <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
           <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
           <maml:para>For example:</maml:para>
-          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
-          <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -677,7 +680,7 @@ SecureString and PSCredential objects use DPAPI, which means that the vault, con
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Example 1: Create the vault</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
@@ -688,12 +691,14 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
         <dev:remarks>
-          <maml:para>This command creates the vault with the name TheVault , which contains two plaintext values - PlainTextOne and PlainTextTwo , two SecureString values - SecureStringOne and SecureStringTwo , and two Credential values - CredentialOne and CredentialTwo .</maml:para>
+          <maml:para>This command creates the vault with the name TheVault, which contains two plaintext values - PlainTextOne and PlainTextTwo, two SecureString values - SecureStringOne and SecureStringTwo, and two Credential values - CredentialOne and CredentialTwo.</maml:para>
           <maml:para>The vault is created under the Vaults folder in the module's directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Example 2: Create the vault file at the specified path</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
 $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
@@ -705,6 +710,8 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
         <dev:remarks>
           <maml:para>This command creates the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

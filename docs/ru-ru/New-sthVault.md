@@ -26,7 +26,7 @@ New-sthVault [-VaultFilePath <String>] [-PlainText <Hashtable>] [-SecureString <
 ## DESCRIPTION
 Функция New-sthVault создает хранилище с указанными свойствами.
 
-Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
+Хранилище (Vault) представляет из себя .xml файл, содержащий пары Имя-Значение.
 
 Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
 
@@ -211,7 +211,7 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPasswo
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```
 
-Команда создает хранилища с именем **TheVault**, состоящее из двух свойств, сохраненных открытым текстом - **PlainTextOne** и **PlainTextTwo**, двух объектов SecureString -  **SecureStringOne** и **SecureStringTwo**, и двух объектов PSCredential - **CredentialOne** and **CredentialTwo**.
+Команда создает хранилища с именем **TheVault**, состоящее из двух свойств, сохраненных открытым текстом - **PlainTextOne** и **PlainTextTwo**, двух объектов SecureString -  **SecureStringOne** и **SecureStringTwo** и двух объектов PSCredential - **CredentialOne** and **CredentialTwo**.
 
 Хранилище будет создано в папке **Vaults**, расположенной в каталоге модуля.
 
