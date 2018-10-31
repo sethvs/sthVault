@@ -822,17 +822,21 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Example 1: Remove the vault</maml:title>
         <dev:code>Remove-sthVault -VaultName TheVault</dev:code>
         <dev:remarks>
-          <maml:para>This command removes the vault with the name specified from the Vaults folder in the module's directory.</maml:para>
+          <maml:para>This command removes the vault with the specified name from the Vaults folder in the module's directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Example 2: Remove the vault file at the specified path</maml:title>
         <dev:code>Remove-sthVault -VaultFilePath C:\Vaults\SomeVault.xml</dev:code>
         <dev:remarks>
           <maml:para>This command removes the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

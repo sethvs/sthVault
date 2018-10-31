@@ -728,7 +728,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </command:details>
     <maml:description>
       <maml:para>Функция Remove-sthVault удаляет указанное хранилище.</maml:para>
-      <maml:para>Параметр -VaultName удаляет хранилище с указанным именем из папки Vaults , расположенной в каталоге модуля.</maml:para>
+      <maml:para>Параметр -VaultName удаляет хранилище с указанным именем из папки Vaults, расположенной в каталоге модуля.</maml:para>
       <maml:para>Параметр -VaultFilePath удаляет файл хранилища, расположенный по указанному пути.</maml:para>
     </maml:description>
     <command:syntax>
@@ -738,7 +738,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Функция удаляет хранилище с указанным именем из папки Vaults , расположенной в каталоге модуля.</maml:para>
+            <maml:para>Функция удаляет хранилище с указанным именем из папки Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -771,7 +771,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Функция удаляет хранилище с указанным именем из папки Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Функция удаляет хранилище с указанным именем из папки Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -822,17 +822,21 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Пример 1: Удаление хранилища</maml:title>
         <dev:code>Remove-sthVault -VaultName TheVault</dev:code>
         <dev:remarks>
-          <maml:para>Команда удаляет хранилище с указанным именем из папки Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Команда удаляет хранилище с указанным именем из папки Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Пример 2: Удаление файла хранилища, расположенного по указанному пути</maml:title>
         <dev:code>Remove-sthVault -VaultFilePath C:\Vaults\SomeVault.xml</dev:code>
         <dev:remarks>
-          <maml:para>Команда удаляет файл хранилища с именем SomeVault.xml , расположенный в каталоге C:\Vaults .</maml:para>
+          <maml:para>Команда удаляет файл хранилища с именем SomeVault.xml, расположенный в каталоге C:\Vaults.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

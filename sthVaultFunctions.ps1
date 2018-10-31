@@ -122,6 +122,7 @@ function Get-sthVault
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Remove-sthVault
 {
     Param(

@@ -89,7 +89,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 Remove-sthVault -VaultName TheVault
 ```
 
-This command removes the vault with the name specified from the **Vaults** folder in the module's directory.
+This command removes the vault with the specified name from the **Vaults** folder in the module's directory.
 
 ### Example 2
 ```powershell
