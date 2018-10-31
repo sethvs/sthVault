@@ -75,7 +75,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 ### -VaultName
 Specifies the vault name.
 
-This is the vault, created by the `New-sthVault` function with the **-VaultName** parameter.
+This is the vault, created by the `New-sthVault` function with the **-VaultName** parameter and located under the **Vaults** folder in the module's directory.
 
 If omitted, returns all the vault names from the **Vaults** folder in the module's directory.
 
@@ -95,6 +95,8 @@ Accept wildcard characters: False
 Specifies the vault file path.
 
 It is the path to .xml file, created by the `New-sthVault` function with the **-VaultFilePath** parameter.
+
+This parameter allows you to use vault file, created in an alternate location.
 
 ```yaml
 Type: String
