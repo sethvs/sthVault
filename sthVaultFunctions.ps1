@@ -1,5 +1,6 @@
 $VaultDirectory = 'Vaults'
 
+# .externalhelp sthVault.help.xml
 function New-sthVault
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
@@ -62,6 +63,7 @@ function New-sthVault
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Get-sthVault
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]

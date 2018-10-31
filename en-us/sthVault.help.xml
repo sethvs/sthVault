@@ -1,0 +1,1241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-sthVault</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>sthVault</command:noun>
+      <maml:description>
+        <maml:para>Gets vault.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Get-sthVault function gets existing vaults or displays content of the specified vault.</maml:para>
+      <maml:para>Vault is an .xml file, containing Name-Vaule pairs.</maml:para>
+      <maml:para>The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.</maml:para>
+      <maml:para>You can create the vault by using the `New-sthVault` function with the -VaultName or -VaultFilePath parameter. -VaultName parameter creates an .xml file with the specified name under the Vaults folder in the module's directory. -VaultFilePath parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.</maml:para>
+      <maml:para>Values can be of three types: PlainText , SecureString , and Credential .</maml:para>
+      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
+      <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+      <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force) $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+      <maml:para>New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential</maml:para>
+      <maml:para>You can get the vault's content by using the `Get-sthVault` function.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>$Settings = Get-sthVault -VaultName TheVault</maml:para>
+      <maml:para>Then you can use it in automation scripts and workflows.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne ConnectTo-Something -Credential $Settings.CredentialOne Get-SomeData -Credential $Settings.CredentialTwo SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-sthVault</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault name.</maml:para>
+            <maml:para>This is the vault, created by the `New-sthVault` function with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+            <maml:para>If omitted, returns all the vault names from the Vaults folder in the module's directory.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyType</maml:name>
+          <maml:Description>
+            <maml:para>Specifies property types to get from vault.</maml:para>
+            <maml:para>Accepted values are:</maml:para>
+            <maml:para>- PlainText</maml:para>
+            <maml:para>- SecureString</maml:para>
+            <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          </maml:Description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">SecureString</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Credential</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the property names to get from vault.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ShowSecureData</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-sthVault</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>VaultFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault file path.</maml:para>
+            <maml:para>It is the path to .xml file, created by the `New-sthVault` function with the -VaultFilePath parameter.</maml:para>
+            <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyType</maml:name>
+          <maml:Description>
+            <maml:para>Specifies property types to get from vault.</maml:para>
+            <maml:para>Accepted values are:</maml:para>
+            <maml:para>- PlainText</maml:para>
+            <maml:para>- SecureString</maml:para>
+            <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          </maml:Description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">SecureString</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">Credential</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the property names to get from vault.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ShowSecureData</maml:name>
+          <maml:Description>
+            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>VaultName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault name.</maml:para>
+          <maml:para>This is the vault, created by the `New-sthVault` function with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+          <maml:para>If omitted, returns all the vault names from the Vaults folder in the module's directory.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>VaultFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault file path.</maml:para>
+          <maml:para>It is the path to .xml file, created by the `New-sthVault` function with the -VaultFilePath parameter.</maml:para>
+          <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PropertyType</maml:name>
+        <maml:Description>
+          <maml:para>Specifies property types to get from vault.</maml:para>
+          <maml:para>Accepted values are:</maml:para>
+          <maml:para>- PlainText</maml:para>
+          <maml:para>- SecureString</maml:para>
+          <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PropertyName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the property names to get from vault.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ShowSecureData</maml:name>
+        <maml:Description>
+          <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-sthVault
+
+SomeVault
+AnotherVault</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns previously created vault's names from the Vaults folder in the module's directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultName TheVault
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                System.Security.SecureString
+SecureStringTwo                System.Security.SecureString
+CredentialOne                  System.Management.Automation.PSCredential
+CredentialTwo                  System.Management.Automation.PSCredential</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault named TheVault , which contains two plaintext values - PlainTextOne and PlainTextTwo , two SecureString values - SecureStringOne and SecureStringTwo , and two Credential values - CredentialOne and CredentialTwo .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultName TheVault -ShowSecureData 
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                One
+SecureStringTwo                Two
+CredentialOne                  {One, OnePassword}
+CredentialTwo                  {Two, TwoPassword}</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault named TheVault , showing encrypted values like SecureStrings and Credentials in plain text.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
+
+Name                           Value
+----                           -----
+PlainText                      SomeValue
+SecureString                   System.Security.SecureString
+Credential                     System.Management.Automation.PSCredential</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault file C:\Vaults\SomeVault.xml .</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+PlainTextTwo                   Two
+SecureStringOne                System.Security.SecureString
+SecureStringTwo                System.Security.SecureString</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault named TheVault , showing only properties with PlainText and SecureString values.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 6 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+SecureStringTwo                System.Security.SecureString</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault named TheVault , showing only PlainTextOne and SecureStringTwo properties.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 7 --------------------------</maml:title>
+        <dev:code>Get-sthVault -VaultName $VaultName -PropertyName *One
+
+Name                           Value
+----                           -----
+PlainTextOne                   One
+SecureStringOne                System.Security.SecureString
+CredentialOne                  System.Management.Automation.PSCredential</dev:code>
+        <dev:remarks>
+          <maml:para>This command returns data from the previously created vault named TheVault , showing only properties which names end with One .</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-sthVault</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>sthVault</command:noun>
+      <maml:description>
+        <maml:para>Creates the vault.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>New-sthVault function creates the vault with the properties specified.</maml:para>
+      <maml:para>Vault is an .xml file, containing Name-Vaule pairs.</maml:para>
+      <maml:para>The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.</maml:para>
+      <maml:para>You can create the vault by using the -VaultName or -VaultFilePath parameter. -VaultName parameter creates an .xml file with the specified name under the Vaults folder in the module's directory. -VaultFilePath parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.</maml:para>
+      <maml:para>Values can be of three types: PlainText , SecureString , and Credential .</maml:para>
+      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
+      <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+      <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force) $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+      <maml:para>New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential</maml:para>
+      <maml:para>You can get the vault's content by using the `Get-sthVault` function.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>$Settings = Get-sthVault -VaultName TheVault</maml:para>
+      <maml:para>Then you can use it in automation scripts and workflows.</maml:para>
+      <maml:para>For example:</maml:para>
+      <maml:para>Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne ConnectTo-Something -Credential $Settings.CredentialOne Get-SomeData -Credential $Settings.CredentialTwo SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-sthVault</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault name.</maml:para>
+            <maml:para>Function creates the vault with the name specified under the Vaults folder in the module's directory.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PlainText</maml:name>
+          <maml:Description>
+            <maml:para>Specifies plain text values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>New-sthVault SomeVault -PlainText @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SecureString</maml:name>
+          <maml:Description>
+            <maml:para>Specifies SecureString values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+            <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies PSCredential values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+            <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
+            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-sthVault</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>VaultFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault file path.</maml:para>
+            <maml:para>This parameter allows you to create vault file in an alternate location.</maml:para>
+            <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PlainText</maml:name>
+          <maml:Description>
+            <maml:para>Specifies plain text values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>New-sthVault SomeVault -PlainText @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SecureString</maml:name>
+          <maml:Description>
+            <maml:para>Specifies SecureString values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+            <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies PSCredential values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+            <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
+            <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>VaultName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault name.</maml:para>
+          <maml:para>Function creates the vault with the name specified under the Vaults folder in the module's directory.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>VaultFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault file path.</maml:para>
+          <maml:para>This parameter allows you to create vault file in an alternate location.</maml:para>
+          <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PlainText</maml:name>
+        <maml:Description>
+          <maml:para>Specifies plain text values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>New-sthVault SomeVault -PlainText @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SecureString</maml:name>
+        <maml:Description>
+          <maml:para>Specifies SecureString values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+          <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force New-sthVault SomeVault -SecureString @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Credential</maml:name>
+        <maml:Description>
+          <maml:para>Specifies PSCredential values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+          <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)</maml:para>
+          <maml:para>New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPassword'}
+
+New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates the vault with the name TheVault , which contains two plaintext values - PlainTextOne and PlainTextTwo , two SecureString values - SecureStringOne and SecureStringTwo , and two Credential values - CredentialOne and CredentialTwo .</maml:para>
+          <maml:para>The vault is created under the Vaults folder in the module's directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
+
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPassword'}
+
+New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-sthVault</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>sthVault</command:noun>
+      <maml:description>
+        <maml:para>Removes the vault.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Remove-sthVault function removes the vault specified.</maml:para>
+      <maml:para>The -VaultName parameter removes the vault located under the Vaults folder in the module's directory.</maml:para>
+      <maml:para>The -VaultFilePath parameter removes the vault file located at the specified path.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-sthVault</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies vault name.</maml:para>
+            <maml:para>Function removes the vault with the name specified under the Vaults folder in the module's directory.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-sthVault</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>VaultFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies vault file path.</maml:para>
+            <maml:para>This parameter allows you to remove vault file, created in an alternate location.</maml:para>
+            <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>VaultName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies vault name.</maml:para>
+          <maml:para>Function removes the vault with the name specified under the Vaults folder in the module's directory.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>VaultFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies vault file path.</maml:para>
+          <maml:para>This parameter allows you to remove vault file, created in an alternate location.</maml:para>
+          <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Remove-sthVault -VaultName TheVault</dev:code>
+        <dev:remarks>
+          <maml:para>This command removes the vault with the name specified from the Vaults folder in the module's directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Remove-sthVault -VaultFilePath C:\Vaults\SomeVault.xml</dev:code>
+        <dev:remarks>
+          <maml:para>This command removes the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-sthVaultProperty</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>sthVaultProperty</command:noun>
+      <maml:description>
+        <maml:para>Removes the vault property.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Remove-sthVaultProperty function removes the properties specified from the vault.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-sthVaultProperty</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault name.</maml:para>
+            <maml:para>This is the vault, created by the `New-sthVault` cmdlet with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies property names to remove fron the vault.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-sthVaultProperty</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>VaultFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies vault file path.</maml:para>
+            <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+            <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PropertyName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies property names to remove fron the vault.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>VaultName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault name.</maml:para>
+          <maml:para>This is the vault, created by the `New-sthVault` cmdlet with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>VaultFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies vault file path.</maml:para>
+          <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+          <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PropertyName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies property names to remove fron the vault.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo</dev:code>
+        <dev:remarks>
+          <maml:para>This command removes the PropertyOne and PropertyTwo properties from the vault TheVault located under the Vaults folder in the module's directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Remove-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PropertyName PropertyOne, PropertyTwo</dev:code>
+        <dev:remarks>
+          <maml:para>This command removes the PropertyOne and PropertyTwo properties from the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Set-sthVaultProperty</command:name>
+      <command:verb>Set</command:verb>
+      <command:noun>sthVaultProperty</command:noun>
+      <maml:description>
+        <maml:para>Adds the new properties or changes values of the existing properties in the vault.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.</maml:para>
+      <maml:para>Properties can be of three types: PlainText , SecureString , and Credential .</maml:para>
+      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-sthVaultProperty</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:Description>
+            <maml:para>Specifies the vault name.</maml:para>
+            <maml:para>This is the vault, created by the `New-sthVault` cmdlet with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PlainText</maml:name>
+          <maml:Description>
+            <maml:para>Specifies plain text values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>Set-sthVaultProperty SomeVault -PlainText @{PlainTextOne = 'NewValue'; NewPlainTextProperty = 'NewPropertyValue'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SecureString</maml:name>
+          <maml:Description>
+            <maml:para>Specifies SecureString values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+            <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies PSCredential values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+            <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
+            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-sthVaultProperty</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>VaultFilePath</maml:name>
+          <maml:Description>
+            <maml:para>Specifies vault file path.</maml:para>
+            <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+            <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>PlainText</maml:name>
+          <maml:Description>
+            <maml:para>Specifies plain text values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>Set-sthVaultProperty SomeVault -PlainText @{PlainTextOne = 'NewValue'; NewPlainTextProperty = 'NewPropertyValue'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SecureString</maml:name>
+          <maml:Description>
+            <maml:para>Specifies SecureString values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+            <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>Credential</maml:name>
+          <maml:Description>
+            <maml:para>Specifies PSCredential values.</maml:para>
+            <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+            <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+            <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+            <maml:para>For example:</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
+            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <dev:type>
+            <maml:name>Hashtable</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>VaultName</maml:name>
+        <maml:Description>
+          <maml:para>Specifies the vault name.</maml:para>
+          <maml:para>This is the vault, created by the `New-sthVault` cmdlet with the -VaultName parameter and located under the Vaults folder in the module's directory.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>VaultFilePath</maml:name>
+        <maml:Description>
+          <maml:para>Specifies vault file path.</maml:para>
+          <maml:para>This parameter allows you to use vault file, created in an alternate location.</maml:para>
+          <maml:para>Value should contain path and file name with .xml extension.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>PlainText</maml:name>
+        <maml:Description>
+          <maml:para>Specifies plain text values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>Set-sthVaultProperty SomeVault -PlainText @{PlainTextOne = 'NewValue'; NewPlainTextProperty = 'NewPropertyValue'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SecureString</maml:name>
+        <maml:Description>
+          <maml:para>Specifies SecureString values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
+          <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>Credential</maml:name>
+        <maml:Description>
+          <maml:para>Specifies PSCredential values.</maml:para>
+          <maml:para>Parameter value should be in the form of hashtable, that contains Name-Value pairs.</maml:para>
+          <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
+          <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
+          <maml:para>For example:</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
+          <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
+
+$SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = 'Three', 'ThreePassword'}
+
+Set-sthVaultProperty -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+
+Get-sthVault -VaultName TheVault -ShowSecureData
+
+Name                           Value
+----                           -----
+PlainTextOne                   1
+PlainTextThree                 Three
+PlainTextTwo                   Two
+SecureStringOne                1
+SecureStringThree              Three
+SecureStringTwo                Two
+CredentialOne                  {1, 1}
+CredentialThree                {Three, ThreePassword}
+CredentialTwo                  {Two, TwoPassword}</dev:code>
+        <dev:remarks>
+          <maml:para>This command changes PlainTextOne , SecureStringOne , and CredentialOne properties and adds PlainTextThree , SecureStringThree , and CredentialThree properties to the vault.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
+
+$SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
+
+$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = 'Three', 'ThreePassword'}
+
+Set-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
+
+Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -ShowSecureData
+
+Name                           Value
+----                           -----
+PlainTextOne                   1
+PlainTextThree                 Three
+PlainTextTwo                   Two
+SecureStringOne                1
+SecureStringThree              Three
+SecureStringTwo                Two
+CredentialOne                  {1, 1}
+CredentialThree                {Three, ThreePassword}
+CredentialTwo                  {Two, TwoPassword}</dev:code>
+        <dev:remarks>
+          <maml:para>This command changes PlainTextOne , SecureStringOne , and CredentialOne properties and adds PlainTextThree , SecureStringThree , and CredentialThree properties to the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+</helpItems>

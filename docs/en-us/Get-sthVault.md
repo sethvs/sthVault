@@ -25,7 +25,7 @@ Get-sthVault [-VaultFilePath <String>] [-ShowSecureData] [-PropertyType <String[
 ```
 
 ## DESCRIPTION
-Get-sthVault function gets existing vaults or specified vault and displays its content.
+Get-sthVault function gets existing vaults or displays content of the specified vault.
 
 Vault is an .xml file, containing Name-Vaule pairs.
 
