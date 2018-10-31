@@ -46,12 +46,11 @@ For example:
 
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
-$SecureStringTwo = ConvertTo-SecureString -String 'Two' -AsPlainText -Force
-$SecureString = @{SecureStringOne = 'One'; SecureStringTwo = $SecureStringTwo}
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 
@@ -93,7 +92,7 @@ Accept wildcard characters: False
 ### -VaultFilePath
 Specifies the vault file path.
 
-This parameter allows you to create vault file in the location other then the  **Vaults** folder in the module's directory.
+This parameter allows you to create vault file in an alternate location.
 
 Value should contain path and file name with .xml extension.
 
@@ -161,14 +160,15 @@ Specifies PSCredential values.
 
 Parameter value should be in the form of hashtable, that contains Name-Value pairs.
 
-Hashtable values should be PSCredential objects.
+Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}
+
+If value is in the form of array, it will be converted to PSCredential.
 
 For example:
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
 
-New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+New-sthVault SomeVault -Credential @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
 
 ```yaml
 Type: Hashtable
@@ -207,8 +207,7 @@ $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
 $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPassword'}
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```
@@ -225,8 +224,7 @@ $SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
 $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two','TwoPassword'}
 
 New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 ```

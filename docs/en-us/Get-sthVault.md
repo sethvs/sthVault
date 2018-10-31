@@ -46,12 +46,11 @@ For example:
 
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
 
-$SecureStringTwo = ConvertTo-SecureString -String 'Two' -AsPlainText -Force
-$SecureString = @{SecureStringOne = 'One'; SecureStringTwo = $SecureStringTwo}
+$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force
+$SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-$CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo}
+$Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'}
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 

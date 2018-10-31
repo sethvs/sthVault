@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ### -VaultFilePath
 Specifies vault file path.
 
-This parameter allows you to use the vault file in the location other then the **Vaults** folder in the module's directory.
+This parameter allows you to use vault file, created in an alternate location.
 
 Value should contain path and file name with .xml extension.
 
@@ -122,14 +122,15 @@ Specifies PSCredential values.
 
 Parameter value should be in the form of hashtable, that contains Name-Value pairs.
 
-Hashtable values should be PSCredential objects.
+Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}
+
+If value is in the form of array, it will be converted to PSCredential.
 
 For example:
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
-$NewCredentialProperty = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewCredentialUserName', $(ConvertTo-SecureString -String 'NewCredentialPassword' -AsPlainText -Force)
 
-Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredentialProperty = $NewCredentialProperty}
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}
 
 ```yaml
 Type: Hashtable
@@ -166,8 +167,7 @@ $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
 $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
-$CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialThree = $CredentialThree}
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = 'Three', 'ThreePassword'}
 
 Set-sthVaultProperty -VaultName TheVault -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 
@@ -196,8 +196,7 @@ $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
 $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringThree = 'Three'}
 
 $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
-$CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
-$Credential = @{CredentialOne = $CredentialOne; CredentialThree = $CredentialThree}
+$Credential = @{CredentialOne = $CredentialOne; CredentialThree = 'Three', 'ThreePassword'}
 
 Set-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -SecureString $Securestring -Credential $Credential
 

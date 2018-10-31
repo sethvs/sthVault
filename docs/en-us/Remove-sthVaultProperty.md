@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ### -VaultFilePath
 Specifies vault file path.
 
-This parameter allows you to use the vault file in the location other then the **Vaults** folder in the module's directory.
+This parameter allows you to use vault file, created in an alternate location.
 
 Value should contain path and file name with .xml extension.
 
