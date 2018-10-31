@@ -10,9 +10,8 @@ Describe "sthVaultTests" {
         $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'; SecureStringThree = 3}
 
         $CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'One', $(ConvertTo-SecureString -String 'OnePassword' -AsPlainText -Force)
-        $CredentialTwo = New-Object System.Management.Automation.PSCredential -ArgumentList 'Two', $(ConvertTo-SecureString -String 'TwoPassword' -AsPlainText -Force)
         $CredentialThree = New-Object System.Management.Automation.PSCredential -ArgumentList 'Three', $(ConvertTo-SecureString -String 'ThreePassword' -AsPlainText -Force)
-        $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = $CredentialTwo; CredentialThree = $CredentialThree}
+        $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassword'; CredentialThree = $CredentialThree}
         
         $VaultName = '_Vault'
         $VaultFilePath = 'TestDrive:\_Vault.xml'
@@ -129,7 +128,6 @@ Describe "sthVaultTests" {
                 Get-sthVault | Should -Not -Contain $VaultName
             }
         }
-        
 
         Context "Vault content" {
 
@@ -282,6 +280,13 @@ Describe "sthVaultTests" {
                 $property.CredentialOne.UserName | Should -BeExactly 1
                 $property.CredentialOne.GetNetworkCredential().Password | Should -BeExactly 1
             }
+
+            It "Should change 'CredentialTwo' property" {
+                Set-sthVaultProperty -VaultName $VaultName -Credential @{CredentialTwo = '2', '2'}
+                $property = Get-sthVault -VaultName $VaultName -PropertyName CredentialTwo
+                $property.CredentialTwo.UserName | Should -BeExactly 2
+                $property.CredentialTwo.GetNetworkCredential().Password | Should -BeExactly 2
+            }
             
             It "Should add 'CredentialFour' property" {
                 $AddCredentialFour = New-Object System.Management.Automation.PSCredential -ArgumentList 'Four', $(ConvertTo-SecureString -String 'FourPassword' -AsPlainText -Force)
@@ -291,8 +296,19 @@ Describe "sthVaultTests" {
                 $property.CredentialFour.GetNetworkCredential().Password | Should -BeExactly 'FourPassword'
             }
 
-            It "Non-Credential object as Credential parameter agrument in Set-sthVaultParameter" {
+            It "Should add 'CredentialFive' property" {
+                Set-sthVaultProperty -VaultName $VaultName -Credential @{CredentialFive = 'Five', 'FivePassword'}
+                $property = Get-sthVault -VaultName $VaultName -PropertyName CredentialFive
+                $property.CredentialFive.UserName | Should -BeExactly 'Five'
+                $property.CredentialFive.GetNetworkCredential().Password | Should -BeExactly 'FivePassword'
+            }
+
+            It "Single string object as Credential parameter agrument in Set-sthVaultParameter" {
                 { Set-sthVaultProperty -VaultName $VaultName -Credential @{NonCredential = 'nonCredential'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
+            }
+
+            It "Array of more than two elements as Credential parameter agrument in Set-sthVaultParameter" {
+                { Set-sthVaultProperty -VaultName $VaultName -Credential @{NonCredential = 'UserName', 'Password', 'SomethingElse'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
             }
         }
 
@@ -463,12 +479,19 @@ Describe "sthVaultTests" {
                 $property.PlainTextFour | Should -BeExactly 'Four'
             }
 
-            It "Should change 'Credential' property" {
+            It "Should change 'CredentialOne' property" {
                 $ChangeCredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList '1', $(ConvertTo-SecureString -String '1' -AsPlainText -Force)
                 Set-sthVaultProperty -VaultFilePath $VaultFilePath -Credential @{CredentialOne = $ChangeCredentialOne}
                 $property = Get-sthVault -VaultFilePath $VaultFilePath -PropertyName CredentialOne
                 $property.CredentialOne.UserName | Should -BeExactly 1
                 $property.CredentialOne.GetNetworkCredential().Password | Should -BeExactly 1
+            }
+
+            It "Should change 'CredentialTwo' property" {
+                Set-sthVaultProperty -VaultFilePath $VaultFilePath -Credential @{CredentialTwo = '2', '2'}
+                $property = Get-sthVault -VaultFilePath $VaultFilePath -PropertyName CredentialTwo
+                $property.CredentialTwo.UserName | Should -BeExactly 2
+                $property.CredentialTwo.GetNetworkCredential().Password | Should -BeExactly 2
             }
 
             It "Should add 'CredentialFour' property" {
@@ -479,8 +502,19 @@ Describe "sthVaultTests" {
                 $property.CredentialFour.GetNetworkCredential().Password | Should -BeExactly 'FourPassword'
             }
 
-            It "Non-Credential object as Credential parameter agrument in Set-sthVaultParameter" {
+            It "Should add 'CredentialFive' property" {
+                Set-sthVaultProperty -VaultFilePath $VaultFilePath -Credential @{CredentialFive = 'Five', 'FivePassword'}
+                $property = Get-sthVault -VaultFilePath $VaultFilePath -PropertyName CredentialFive
+                $property.CredentialFive.UserName | Should -BeExactly 'Five'
+                $property.CredentialFive.GetNetworkCredential().Password | Should -BeExactly 'FivePassword'
+            }
+
+            It "Single string object as Credential parameter agrument in Set-sthVaultParameter" {
                 { Set-sthVaultProperty -VaultFilePath $VaultFilePath -Credential @{NonCredential = 'nonCredential'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
+            }
+
+            It "Array of more than two elements as Credential parameter agrument in Set-sthVaultParameter" {
+                { Set-sthVaultProperty -VaultFilePath $VaultFilePath -Credential @{NonCredential = 'UserName', 'Password', 'SomethingElse'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
             }
 
         }
@@ -528,7 +562,11 @@ Describe "sthVaultTests" {
         }
     }
 
-    It "Non-Credential object as Credential parameter agrument - New-sthVault" {
+    It "Single string object as Credential parameter agrument in New-sthVault" {
         { New-sthVault -VaultName 'er' -Credential @{NonCredential = 'nonCredential'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
+    }
+
+    It "Array of more than two elements as Credential parameter agrument in New-sthVault" {
+        { New-sthVault -VaultName 'er' -Credential @{NonCredential = 'UserName', 'Password', 'SomethingElse'} -ErrorAction Stop } | Should -Throw -ExceptionType System.ArgumentException
     }
 }
