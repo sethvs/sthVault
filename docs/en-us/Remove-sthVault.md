@@ -27,7 +27,7 @@ Remove-sthVault function removes the vault specified.
 
 The **-VaultName** parameter removes the vault located under the **Vaults** folder in the module's directory.
 
-The **-VaultFilePath** parameter allows you to remove the vault file in the location other then the  **Vaults** folder in the module's directory.
+The **-VaultFilePath** parameter removes the vault file located at the specified path.
 
 ## PARAMETERS
 
