@@ -55,8 +55,8 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
-            <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults , расположенной в каталоге модуля.</maml:para>
+            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящего в папке Vaults, расположенной в каталоге модуля.</maml:para>
+            <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -69,11 +69,11 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>PropertyType</maml:name>
           <maml:Description>
             <maml:para>Указывает типы свойств, которые требуется получить из хранилища.</maml:para>
-            <maml:para>Параметр принимает следующие значения:</maml:para>
-            <maml:para>- PlainText</maml:para>
-            <maml:para>- SecureString</maml:para>
-            <maml:para>- Credential</maml:para>
-            <maml:para></maml:para>
+            <maml:para>Параметр принимает следующие значения:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
             <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
@@ -103,7 +103,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
-            <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential должны быть представлены в расшифрованном виде.</maml:para>
+            <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
             <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
@@ -119,7 +119,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>VaultFilePath</maml:name>
           <maml:Description>
             <maml:para>Указывает путь и имя файла хранилища.</maml:para>
-            <maml:para>Это путь и имя файла .xml, созданного при помощи команды `New-sthVault` с параметром -VaultFilePath .</maml:para>
+            <maml:para>Это путь и имя файла .xml, созданного при помощи команды `New-sthVault` с параметром -VaultFilePath.</maml:para>
             <maml:para>Этот параметр позволяет вам использовать файл хранилища, расположенный в произвольной локации.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -133,11 +133,11 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>PropertyType</maml:name>
           <maml:Description>
             <maml:para>Указывает типы свойств, которые требуется получить из хранилища.</maml:para>
-            <maml:para>Параметр принимает следующие значения:</maml:para>
-            <maml:para>- PlainText</maml:para>
-            <maml:para>- SecureString</maml:para>
-            <maml:para>- Credential</maml:para>
-            <maml:para></maml:para>
+            <maml:para>Параметр принимает следующие значения:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
             <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
@@ -167,7 +167,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
-            <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential должны быть представлены в расшифрованном виде.</maml:para>
+            <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
             <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
           </maml:Description>
           <dev:type>
@@ -183,8 +183,8 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
-          <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящего в папке Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -197,7 +197,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>VaultFilePath</maml:name>
         <maml:Description>
           <maml:para>Указывает путь и имя файла хранилища.</maml:para>
-          <maml:para>Это путь и имя файла .xml, созданного при помощи команды `New-sthVault` с параметром -VaultFilePath .</maml:para>
+          <maml:para>Это путь и имя файла .xml, созданного при помощи команды `New-sthVault` с параметром -VaultFilePath.</maml:para>
           <maml:para>Этот параметр позволяет вам использовать файл хранилища, расположенный в произвольной локации.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -211,11 +211,11 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>PropertyType</maml:name>
         <maml:Description>
           <maml:para>Указывает типы свойств, которые требуется получить из хранилища.</maml:para>
-          <maml:para>Параметр принимает следующие значения:</maml:para>
-          <maml:para>- PlainText</maml:para>
-          <maml:para>- SecureString</maml:para>
-          <maml:para>- Credential</maml:para>
-          <maml:para></maml:para>
+          <maml:para>Параметр принимает следующие значения:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
           <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
@@ -240,7 +240,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ShowSecureData</maml:name>
         <maml:Description>
-          <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential должны быть представлены в расшифрованном виде.</maml:para>
+          <maml:para>Указывает, что зашифрованные данные, такие как значения SecureString или Credential, должны быть представлены в расшифрованном виде.</maml:para>
           <maml:para>Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -278,17 +278,19 @@ Get-SomeData -Credential $Settings.CredentialTwo
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Пример 1: Получение списка хранилищ</maml:title>
         <dev:code>Get-sthVault
 
 SomeVault
 AnotherVault</dev:code>
         <dev:remarks>
-          <maml:para>Команда отображает список созданных ранее хранилищ, находящихся в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Команда отображает список созданных ранее хранилищ, находящихся в папке Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Пример 2: Получение содержимого хранилища</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault
 
 Name                           Value
@@ -300,11 +302,13 @@ SecureStringTwo                System.Security.SecureString
 CredentialOne                  System.Management.Automation.PSCredential
 CredentialTwo                  System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>Команда отображает содержимое хранилища с именем TheVault , состоящее из двух свойств, сохраненных открытым текстом - PlainTextOne и PlainTextTwo , двух объектов SecureString - SecureStringOne и SecureStringTwo и двух объектов PSCredential - CredentialOne and CredentialTwo .</maml:para>
+          <maml:para>Команда отображает содержимое хранилища с именем TheVault, состоящее из двух свойств, сохраненных открытым текстом - PlainTextOne и PlainTextTwo, двух объектов SecureString - SecureStringOne и SecureStringTwo и двух объектов PSCredential - CredentialOne and CredentialTwo.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <maml:title>Пример 3: Получение содержимого хранилища и представление зашифрованных элементов в расшифрованном виде</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -ShowSecureData 
 
 Name                           Value
@@ -316,11 +320,13 @@ SecureStringTwo                Two
 CredentialOne                  {One, OnePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>Команда отображает содержимое хранилища с именем TheVault , представляя зашифрованные значения, такие как объекты SecureStrings и Credentials , в расшифрованном виде.</maml:para>
+          <maml:para>Команда отображает содержимое хранилища с именем TheVault, представляя зашифрованные значения, такие как объекты SecureString и PSCredential, в расшифрованном виде.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <maml:title>Пример 4: Получение содержимого файла хранилища, расположенного в указанном местоположении</maml:title>
         <dev:code>Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
 
 Name                           Value
@@ -329,11 +335,13 @@ PlainText                      SomeValue
 SecureString                   System.Security.SecureString
 Credential                     System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>Команда отображает содержимое файла хранилища, расположенного по пути C:\Vaults\SomeVault.xml .</maml:para>
+          <maml:para>Команда отображает содержимое файла хранилища с именем SomeVault.xml, расположенного в папке C:\Vaults.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <maml:title>Пример 5: Получение свойств определенного типа</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
 
 Name                           Value
@@ -343,11 +351,13 @@ PlainTextTwo                   Two
 SecureStringOne                System.Security.SecureString
 SecureStringTwo                System.Security.SecureString</dev:code>
         <dev:remarks>
-          <maml:para>Команда получает содержимое хранилища с именем TheVault , возвращая только свойства со значениями типа PlainText и SecureString .</maml:para>
+          <maml:para>Команда получает содержимое хранилища с именем TheVault, возвращая только свойства со значениями типа PlainText и SecureString.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 6 --------------------------</maml:title>
+        <maml:title>Пример 6: Получение свойств с определенными именами</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
 
 Name                           Value
@@ -355,11 +365,13 @@ Name                           Value
 PlainTextOne                   One
 SecureStringTwo                System.Security.SecureString</dev:code>
         <dev:remarks>
-          <maml:para>Команда получает содержимое хранилища с именем TheVault , возвращая только свойства с именами PlainTextOne и SecureStringTwo .</maml:para>
+          <maml:para>Команда получает содержимое хранилища с именем TheVault, возвращая только свойства с именами PlainTextOne и SecureStringTwo.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 7 --------------------------</maml:title>
+        <maml:title>Пример 7: Получение свойств с определенными именами с использованием символов подстановки</maml:title>
         <dev:code>Get-sthVault -VaultName $VaultName -PropertyName *One
 
 Name                           Value
@@ -368,7 +380,9 @@ PlainTextOne                   One
 SecureStringOne                System.Security.SecureString
 CredentialOne                  System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>Команда получает содержимое хранилища с именем TheVault , возвращая только свойства, имена которых оканчиваются на One .</maml:para>
+          <maml:para>Команда получает содержимое хранилища с именем TheVault, возвращая только свойства, имена которых оканчиваются на One.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

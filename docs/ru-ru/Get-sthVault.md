@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShowSecureData
-Указывает, что зашифрованные данные, такие как значения **SecureString** или **Credential** должны быть представлены в расшифрованном виде.
+Указывает, что зашифрованные данные, такие как значения **SecureString** или **Credential**, должны быть представлены в расшифрованном виде.
 
 Объекты **SecureStrings** и **PSCredential** используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
 
@@ -223,7 +223,7 @@ CredentialOne                  {One, OnePassword}
 CredentialTwo                  {Two, TwoPassword}
 ```
 
-Команда отображает содержимое хранилища с именем **TheVault**, представляя зашифрованные значения, такие как объекты **SecureStrings** и **Credentials**, в расшифрованном виде.
+Команда отображает содержимое хранилища с именем **TheVault**, представляя зашифрованные значения, такие как объекты **SecureString** и **PSCredential**, в расшифрованном виде.
 
 ### Example 4
 ```powershell
@@ -236,7 +236,7 @@ SecureString                   System.Security.SecureString
 Credential                     System.Management.Automation.PSCredential
 ```
 
-Команда отображает содержимое файла хранилища, расположенного по пути **C:\Vaults\SomeVault.xml**.
+Команда отображает содержимое файла хранилища с именем **SomeVault.xml**, расположенного в папке **C:\Vaults**.
 
 ### Example 5
 ```powershell

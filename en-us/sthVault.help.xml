@@ -69,10 +69,12 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
           <maml:name>PropertyType</maml:name>
           <maml:Description>
             <maml:para>Specifies property types to get from vault.</maml:para>
-            <maml:para>Accepted values are:</maml:para>
-            <maml:para>- PlainText</maml:para>
-            <maml:para>- SecureString</maml:para>
-            <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+            <maml:para>Accepted values are:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
+            <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -101,7 +103,8 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
-            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
+            <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -130,10 +133,12 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
           <maml:name>PropertyType</maml:name>
           <maml:Description>
             <maml:para>Specifies property types to get from vault.</maml:para>
-            <maml:para>Accepted values are:</maml:para>
-            <maml:para>- PlainText</maml:para>
-            <maml:para>- SecureString</maml:para>
-            <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+            <maml:para>Accepted values are:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
+            <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">PlainText</command:parameterValue>
@@ -162,7 +167,8 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>ShowSecureData</maml:name>
           <maml:Description>
-            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+            <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
+            <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
           </maml:Description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -205,10 +211,12 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
         <maml:name>PropertyType</maml:name>
         <maml:Description>
           <maml:para>Specifies property types to get from vault.</maml:para>
-          <maml:para>Accepted values are:</maml:para>
-          <maml:para>- PlainText</maml:para>
-          <maml:para>- SecureString</maml:para>
-          <maml:para>- Credential SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          <maml:para>Accepted values are:
+
+- PlainText
+- SecureString
+- Credential</maml:para>
+          <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
         <dev:type>
@@ -232,7 +240,8 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>ShowSecureData</maml:name>
         <maml:Description>
-          <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text. SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
+          <maml:para>Specifies that encrypted data, like the SecureString or Credential values should be returned in plain text.</maml:para>
+          <maml:para>SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -269,17 +278,19 @@ SecureStrings and PSCredential objects use DPAPI, which means that the vault, co
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Example 1: Get vault list</maml:title>
         <dev:code>Get-sthVault
 
 SomeVault
 AnotherVault</dev:code>
         <dev:remarks>
           <maml:para>This command returns previously created vault's names from the Vaults folder in the module's directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Example 2: Get vault content</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault
 
 Name                           Value
@@ -291,11 +302,13 @@ SecureStringTwo                System.Security.SecureString
 CredentialOne                  System.Management.Automation.PSCredential
 CredentialTwo                  System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault named TheVault , which contains two plaintext values - PlainTextOne and PlainTextTwo , two SecureString values - SecureStringOne and SecureStringTwo , and two Credential values - CredentialOne and CredentialTwo .</maml:para>
+          <maml:para>This command returns data from the previously created vault named TheVault, which contains two plaintext values - PlainTextOne and PlainTextTwo, two SecureString values - SecureStringOne and SecureStringTwo, and two Credential values - CredentialOne and CredentialTwo.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <maml:title>Example 3: Get vault content and show encrypted data</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -ShowSecureData 
 
 Name                           Value
@@ -307,11 +320,13 @@ SecureStringTwo                Two
 CredentialOne                  {One, OnePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault named TheVault , showing encrypted values like SecureStrings and Credentials in plain text.</maml:para>
+          <maml:para>This command returns data from the previously created vault named TheVault, showing encrypted values like SecureStrings and Credentials in plain text.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 4 --------------------------</maml:title>
+        <maml:title>Example 4: Get vault content from the vault file in alternate location</maml:title>
         <dev:code>Get-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
 
 Name                           Value
@@ -320,11 +335,13 @@ PlainText                      SomeValue
 SecureString                   System.Security.SecureString
 Credential                     System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault file C:\Vaults\SomeVault.xml .</maml:para>
+          <maml:para>This command returns data from the previously created vault file C:\Vaults\SomeVault.xml.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 5 --------------------------</maml:title>
+        <maml:title>Example 5: Get vault properties of specified type only</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -PropertyType PlainText, SecureString
 
 Name                           Value
@@ -334,11 +351,13 @@ PlainTextTwo                   Two
 SecureStringOne                System.Security.SecureString
 SecureStringTwo                System.Security.SecureString</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault named TheVault , showing only properties with PlainText and SecureString values.</maml:para>
+          <maml:para>This command returns data from the previously created vault named TheVault, showing only properties with PlainText and SecureString values.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 6 --------------------------</maml:title>
+        <maml:title>Example 6: Get vault properties with specified names only</maml:title>
         <dev:code>Get-sthVault -VaultName TheVault -PropertyName PlainTextOne, SecureStringTwo
 
 Name                           Value
@@ -346,11 +365,13 @@ Name                           Value
 PlainTextOne                   One
 SecureStringTwo                System.Security.SecureString</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault named TheVault , showing only PlainTextOne and SecureStringTwo properties.</maml:para>
+          <maml:para>This command returns data from the previously created vault named TheVault, showing only PlainTextOne and SecureStringTwo properties.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 7 --------------------------</maml:title>
+        <maml:title>Example 7: Get vault properties with specified names using wildcards</maml:title>
         <dev:code>Get-sthVault -VaultName $VaultName -PropertyName *One
 
 Name                           Value
@@ -359,7 +380,9 @@ PlainTextOne                   One
 SecureStringOne                System.Security.SecureString
 CredentialOne                  System.Management.Automation.PSCredential</dev:code>
         <dev:remarks>
-          <maml:para>This command returns data from the previously created vault named TheVault , showing only properties which names end with One .</maml:para>
+          <maml:para>This command returns data from the previously created vault named TheVault, showing only properties which names end with One.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>
