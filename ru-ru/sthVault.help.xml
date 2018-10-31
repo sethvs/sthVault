@@ -55,7 +55,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящего в папке Vaults, расположенной в каталоге модуля.</maml:para>
+            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
             <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -183,7 +183,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящего в папке Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
           <maml:para>Если параметр отсутствует, команда выводит имена всех хранилищ, находящихся в папке Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -861,7 +861,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
+            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -918,7 +918,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -981,17 +981,21 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Пример 1: Удаление свойств из хранилища</maml:title>
         <dev:code>Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo</dev:code>
         <dev:remarks>
-          <maml:para>Команда удаляет свойства PropertyOne и PropertyTwo из хранилища с именем TheVault , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Команда удаляет свойства PropertyOne и PropertyTwo из хранилища с именем TheVault, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Пример 2: Удаление свойств из файла хранилища, расположенного по указанному пути</maml:title>
         <dev:code>Remove-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PropertyName PropertyOne, PropertyTwo</dev:code>
         <dev:remarks>
-          <maml:para>Команда удаляет свойства PropertyOne и PropertyTwo из файла хранилища с именем SomeVault.xml , расположенного в каталоге C:\Vaults .</maml:para>
+          <maml:para>Команда удаляет свойства PropertyOne и PropertyTwo из файла хранилища с именем SomeVault.xml, расположенного в каталоге C:\Vaults.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1003,13 +1007,14 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
       <command:verb>Set</command:verb>
       <command:noun>sthVaultProperty</command:noun>
       <maml:description>
-        <maml:para>Команда добавляет новые свойства в хранилище и изменияет значения существующих.</maml:para>
+        <maml:para>Команда добавляет новые свойства в хранилище и изменяет значения существующих свойств.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Функция Set-sthVaultProperty добавляет новые свойства в указанное хранилище и изменияет значения существующих.</maml:para>
-      <maml:para>Значения свойств хранилища могут быть трех типов: PlainText , SecureString , и Credential .</maml:para>
-      <maml:para>Вы можете использовать параметры -PlainText , -SecureString , и -Credential для задания требуемых свойств. Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
+      <maml:para>Функция Set-sthVaultProperty добавляет новые свойства в указанное хранилище и изменяет значения существующих свойств.</maml:para>
+      <maml:para>Значения свойств хранилища могут быть трех типов: PlainText, SecureString и Credential.</maml:para>
+      <maml:para>Вы можете использовать параметры -PlainText, -SecureString и -Credential для задания требуемых свойств.
+Каждый из этих параметров принимает в качестве значения хеш-таблицу (hashtable), содержащую пары Имя-Значение.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1018,7 +1023,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:name>VaultName</maml:name>
           <maml:Description>
             <maml:para>Указывает имя хранилища.</maml:para>
-            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
+            <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -1050,7 +1055,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
             <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1067,8 +1073,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1117,7 +1123,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
             <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1134,8 +1141,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
             <maml:para>Например:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1151,7 +1158,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
         <maml:name>VaultName</maml:name>
         <maml:Description>
           <maml:para>Указывает имя хранилища.</maml:para>
-          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName , находящего в папке Vaults , расположенной в каталоге модуля.</maml:para>
+          <maml:para>Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром -VaultName, находящегося в папке Vaults, расположенной в каталоге модуля.</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1197,7 +1204,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:para>Значения хэш-таблицы могут быть как объектами SecureString, так и открытым текстом.</maml:para>
           <maml:para>Если значение представлено открытым текстом, оно будет преобразовано в объект SecureString.</maml:para>
           <maml:para>Например:</maml:para>
-          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -1214,8 +1222,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:para>Значения хэш-таблицы могут быть как объектами PSCredential, так и массивом, состоящим из двух элементов, к примеру - @{Credential = 'Name', 'Password'}</maml:para>
           <maml:para>Если значение представлено в виде массива, оно будет преобразовано в объект PSCredential.</maml:para>
           <maml:para>Например:</maml:para>
-          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-          <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -1252,7 +1260,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Пример 1: Изменение нескольких свойств и добавление новых</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
 
 $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
@@ -1277,11 +1285,13 @@ CredentialOne                  {1, 1}
 CredentialThree                {Three, ThreePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>Команда изменяет значения свойств PlainTextOne , SecureStringOne и CredentialOne , и добавляет свойства PlainTextThree , SecureStringThree и CredentialThree в хранилище.</maml:para>
+          <maml:para>Команда изменяет значения свойств PlainTextOne, SecureStringOne и CredentialOne, и добавляет свойства PlainTextThree, SecureStringThree и CredentialThree в хранилище.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Пример 2: Изменение нескольких свойств и добавление новых в хранилище, расположенное по указанному пути</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
 
 $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
@@ -1306,7 +1316,9 @@ CredentialOne                  {1, 1}
 CredentialThree                {Three, ThreePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>Команда изменяет значения свойств PlainTextOne , SecureStringOne и CredentialOne , и добавляет свойства PlainTextThree , SecureStringThree и CredentialThree в файл хранилища с именем SomeVault.xml , расположенный в каталоге C:\Vaults .</maml:para>
+          <maml:para>Команда изменяет значения свойств PlainTextOne, SecureStringOne и CredentialOne, и добавляет свойства PlainTextThree, SecureStringThree и CredentialThree в файл хранилища с именем SomeVault.xml, расположенный в каталоге C:\Vaults.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

@@ -31,7 +31,7 @@ Remove-sthVaultProperty [-VaultFilePath <String>] [-PropertyName <String[]>] [<C
 
 Указывает имя хранилища.
 
-Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром **-VaultName**, находящего в папке **Vaults**, расположенной в каталоге модуля.
+Это имя хранилища, созданного при помощи команды `New-sthVault` с параметром **-VaultName**, находящегося в папке **Vaults**, расположенной в каталоге модуля.
 
 ```yaml
 Type: String
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo
 ```
 
-Команда удаляет свойства **PropertyOne** и **PropertyTwo** из хранилища с именем **TheVault**, находящего в папке **Vaults**, расположенной в каталоге модуля.
+Команда удаляет свойства **PropertyOne** и **PropertyTwo** из хранилища с именем **TheVault**, находящегося в папке **Vaults**, расположенной в каталоге модуля.
 
 ### Example 2
 ```powershell

@@ -146,6 +146,7 @@ function Remove-sthVault
     Remove-Item -Path $Path
 }
 
+# .externalhelp sthVault.help.xml
 function Set-sthVaultProperty
 {
     [CmdletBinding(DefaultParameterSetName='VaultName')]
@@ -251,6 +252,7 @@ function Set-sthVaultProperty
     }
 }
 
+# .externalhelp sthVault.help.xml
 function Remove-sthVaultProperty
 {
     Param(

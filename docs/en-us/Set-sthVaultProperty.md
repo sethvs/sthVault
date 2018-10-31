@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-sthVaultProperty
 
 ## SYNOPSIS
-Adds the new properties or changes values of the existing properties in the vault.
+Adds new properties or changes values of the existing properties in the vault.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Set-sthVaultProperty [-VaultFilePath <String>] [-PlainText <Hashtable>] [-Secure
 ```
 
 ## DESCRIPTION
-Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.
+Set-sthVaultProperty function adds new properties or changes values of the existing properties in the vault.
 
 Properties can be of three types: **PlainText**, **SecureString**, and **Credential**.
 

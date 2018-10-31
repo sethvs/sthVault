@@ -852,7 +852,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Remove-sthVaultProperty function removes the properties specified from the vault.</maml:para>
+      <maml:para>Remove-sthVaultProperty function removes specified properties from the vault.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -981,17 +981,21 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Example 1: Remove properties from the vault</maml:title>
         <dev:code>Remove-sthVaultProperty -VaultName TheVault -PropertyName PropertyOne, PropertyTwo</dev:code>
         <dev:remarks>
           <maml:para>This command removes the PropertyOne and PropertyTwo properties from the vault TheVault located under the Vaults folder in the module's directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Example 2: Remove properties from the vault file at the path specified</maml:title>
         <dev:code>Remove-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PropertyName PropertyOne, PropertyTwo</dev:code>
         <dev:remarks>
           <maml:para>This command removes the PropertyOne and PropertyTwo properties from the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1003,13 +1007,14 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
       <command:verb>Set</command:verb>
       <command:noun>sthVaultProperty</command:noun>
       <maml:description>
-        <maml:para>Adds the new properties or changes values of the existing properties in the vault.</maml:para>
+        <maml:para>Adds new properties or changes values of the existing properties in the vault.</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.</maml:para>
-      <maml:para>Properties can be of three types: PlainText , SecureString , and Credential .</maml:para>
-      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Value pairs.</maml:para>
+      <maml:para>Set-sthVaultProperty function adds new properties or changes values of the existing properties in the vault.</maml:para>
+      <maml:para>Properties can be of three types: PlainText, SecureString, and Credential.</maml:para>
+      <maml:para>You can use the -PlainText, -SecureString, and -Credential parameters to specify needed vaules.
+Each of these parameters accepts HashTable as an argument, which contains Name-Value pairs.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1050,7 +1055,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
             <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1067,8 +1073,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1117,7 +1123,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
             <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+            <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1134,8 +1141,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
             <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
             <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
             <maml:para>For example:</maml:para>
-            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-            <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+            <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
           </maml:Description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
           <dev:type>
@@ -1197,7 +1204,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:para>Hashtable values can be SecureStrings objects, or plain text.</maml:para>
           <maml:para>If value is in plain text, it will be converted to SecureString.</maml:para>
           <maml:para>For example:</maml:para>
-          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
+          <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'NewValue' -AsPlainText -Force
+Set-sthVaultProperty SomeVault -SecureString @{SecureStringOne = $SecureStringOne; NewSecureStringProperty = 'NewPropertyValue'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -1214,8 +1222,8 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
           <maml:para>Hashtable values can be PSCredential objects, or arrays of two elements, i.e. @{Credential = 'Name', 'Password'}</maml:para>
           <maml:para>If value is in the form of array, it will be converted to PSCredential.</maml:para>
           <maml:para>For example:</maml:para>
-          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)</maml:para>
-          <maml:para>Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
+          <maml:para>$CredentialOne = New-Object System.Management.Automation.PSCredential -ArgumentList 'NewUsername', $(ConvertTo-SecureString -String 'NewPassword' -AsPlainText -Force)
+Set-sthVaultProperty SomeVault -Credential @{CredentialOne = $CredentialOne; NewCredential = 'NewCredentialUsername', 'NewCredentialPassword'}</maml:para>
         </maml:Description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -1252,7 +1260,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:title>Example 1: Change several properties and add new ones to the vault</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
 
 $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
@@ -1277,11 +1285,13 @@ CredentialOne                  {1, 1}
 CredentialThree                {Three, ThreePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>This command changes PlainTextOne , SecureStringOne , and CredentialOne properties and adds PlainTextThree , SecureStringThree , and CredentialThree properties to the vault.</maml:para>
+          <maml:para>This command changes PlainTextOne, SecureStringOne, and CredentialOne properties and adds PlainTextThree, SecureStringThree, and CredentialThree properties to the vault.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:title>Example 2: Change several properties and add new ones to the vault file at the path specified</maml:title>
         <dev:code>$PlainText = @{PlainTextOne = '1'; PlainTextThree = 'Three'}
 
 $SecureStringOne = ConvertTo-SecureString -String '1' -AsPlainText -Force
@@ -1306,7 +1316,9 @@ CredentialOne                  {1, 1}
 CredentialThree                {Three, ThreePassword}
 CredentialTwo                  {Two, TwoPassword}</dev:code>
         <dev:remarks>
-          <maml:para>This command changes PlainTextOne , SecureStringOne , and CredentialOne properties and adds PlainTextThree , SecureStringThree , and CredentialThree properties to the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+          <maml:para>This command changes PlainTextOne, SecureStringOne, and CredentialOne properties and adds PlainTextThree, SecureStringThree, and CredentialThree properties to the vault file with the name SomeVault.xml in the C:\Vaults directory.</maml:para>
+          <maml:para/>
+          <maml:para/>
         </dev:remarks>
       </command:example>
     </command:examples>

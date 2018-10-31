@@ -23,7 +23,7 @@ Remove-sthVaultProperty [-VaultFilePath <String>] [-PropertyName <String[]>] [<C
 ```
 
 ## DESCRIPTION
-Remove-sthVaultProperty function removes the properties specified from the vault.
+Remove-sthVaultProperty function removes specified properties from the vault.
 
 ## PARAMETERS
 
