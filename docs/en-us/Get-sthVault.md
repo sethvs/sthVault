@@ -54,7 +54,7 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassw
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 
-You can get the vault's content by using the `Get-sthVault` cmdlet.
+You can get the vault's content by using the `Get-sthVault` function.
 
 For example:
 
@@ -75,7 +75,7 @@ Get-SomeData -Credential $Settings.CredentialTwo
 ### -VaultName
 Specifies the vault name.
 
-This is the vault, created by the `New-sthVault` cmdlet with the **-VaultName** parameter.
+This is the vault, created by the `New-sthVault` function with the **-VaultName** parameter.
 
 If omitted, returns all the vault names from the **Vaults** folder in the module's directory.
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ### -VaultFilePath
 Specifies the vault file path.
 
-It is the path to .xml file, created by the `New-sthVault` cmdlet with the **-VaultFilePath** parameter.
+It is the path to .xml file, created by the `New-sthVault` function with the **-VaultFilePath** parameter.
 
 ```yaml
 Type: String

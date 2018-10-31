@@ -54,7 +54,7 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassw
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 
-You can get the vault's content by using the `Get-sthVault` cmdlet.
+You can get the vault's content by using the `Get-sthVault` function.
 
 For example:
 
