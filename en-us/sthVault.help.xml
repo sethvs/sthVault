@@ -12,24 +12,15 @@
     <maml:description>
       <maml:para>Get-sthVault function gets existing vaults or displays content of the specified vault.
 
-
-Vault is an .xml file, containing Name-Vaule pairs.
-
+Vault is an .xml file, containing Name-Value pairs.
 The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.
-
 You can create the vault by using the `New-sthVault` function with the -VaultName or -VaultFilePath parameter.
-
 -VaultName parameter creates an .xml file with the specified name under the Vaults folder in the module's directory.
-
 -VaultFilePath parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.
 
-
 Values can be of three types: PlainText, SecureString, and Credential.
-
 You can use the -PlainText, -SecureString, and -Credential parameters to specify needed vaules.
-
-Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.
-
+Each of these parameters accepts HashTable as an argument, which contains the Name-Value pairs.
 For example:
 
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
@@ -42,22 +33,17 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassw
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 
-
 You can get the vault's content by using the `Get-sthVault` function.
-
 For example:
 
 $Settings = Get-sthVault -VaultName TheVault
 
-
 Then you can use it in automation scripts and workflows.
-
 For example:
 
 Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
-
 
 SecureStrings and PSCredential objects use DPAPI, which means that the vault, containing SecureStrings or PSCredentials can only be used on the computer it was created on, and under the user account, that created it.
 </maml:para>
@@ -390,11 +376,11 @@ CredentialOne                  System.Management.Automation.PSCredential</dev:co
     </command:details>
     <maml:description>
       <maml:para>New-sthVault function creates the vault with the properties specified.</maml:para>
-      <maml:para>Vault is an .xml file, containing Name-Vaule pairs.</maml:para>
+      <maml:para>Vault is an .xml file, containing Name-Value pairs.</maml:para>
       <maml:para>The vaults can be useful when you need to store some values, be it in the plain text form, SecureStrings or PSCredential object and then use them in automation scripts and workflows.</maml:para>
       <maml:para>You can create the vault by using the -VaultName or -VaultFilePath parameter. -VaultName parameter creates an .xml file with the specified name under the Vaults folder in the module's directory. -VaultFilePath parameters accepts path and name of the file, i.e. C:\Folder\file.xml, and creates it in the specified location.</maml:para>
       <maml:para>Values can be of three types: PlainText , SecureString , and Credential .</maml:para>
-      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.</maml:para>
+      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Value pairs.</maml:para>
       <maml:para>For example:</maml:para>
       <maml:para>$PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}</maml:para>
       <maml:para>$SecureStringOne = ConvertTo-SecureString -String 'One' -AsPlainText -Force $SecureString = @{SecureStringOne = $SecureStringOne; SecureStringTwo = 'Two'}</maml:para>
@@ -969,7 +955,7 @@ New-sthVault -VaultFilePath C:\Vaults\SomeVault.xml -PlainText $PlainText -Secur
     <maml:description>
       <maml:para>Set-sthVaultProperty function add the new properties or changes values of the existing properties in the vault.</maml:para>
       <maml:para>Properties can be of three types: PlainText , SecureString , and Credential .</maml:para>
-      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Vaule pairs.</maml:para>
+      <maml:para>You can use the -PlainText , -SecureString , and -Credential parameters to specify needed vaules. Each of these parameters accepts HashTable as an argument, which contains the Name-Value pairs.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>

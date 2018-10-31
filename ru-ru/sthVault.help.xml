@@ -12,24 +12,15 @@
     <maml:description>
       <maml:para>Функция Get-sthVault отображает список существующих хранилищ или содержимое указанного хранилища.
 
-
 Хранилище (Vault) представляет из себя .xml файл, содержащие пары Имя-Значение.
-
 Хранилища могут быть полезны если вам нужно сохранить некие значения, будь то обычный текст, объекты SecureString или PSCredential, с целью их использования в скриптах автоматизации или рабочих процессах.
-
 Вы можете создать хранилище при помощи команды `New-sthVault` с параметром -VaultName или -VaultFilePath.
-
 Параметр -VaultName создает .xml файл с указанным именем в папке Vaults, расположенной в каталоге модуля.
-
 Параметр -VaultFilePath принимает в качестве значения путь и имя файла, например C:\Folder\file.xml, и создает его в указанном расположении.
 
-
 Значения свойств хранилища могут быть трех типов: PlainText, SecureString, и Credential.
-
 Вы можете использовать параметры -PlainText, -SecureString, и -Credential для создания требуемых свойств.
-
 Каждый из этих параметров принимает в качестве значания хеш-таблицу (hashtable), содержащую пары Имя-Значение.
-
 Например:
 
 $PlainText = @{PlainTextOne = 'One'; PlainTextTwo = 'Two'}
@@ -42,22 +33,17 @@ $Credential = @{CredentialOne = $CredentialOne; CredentialTwo = 'Two', 'TwoPassw
 
 New-sthVault -VaultName TheVault -PlainText $PlainText -SecureString $SecureString -Credential $Credential
 
-
 Вы можете получить содержимое хранилица при помощи команды `Get-sthVault`.
-
 Например:
 
 $Settings = Get-sthVault -VaultName TheVault
 
-
 Затем, вы можете использовать его в скриптах автоматизации и рабочих процессах.
-
 Например:
 
 Get-SomeInfo -UserName $Settings.PlainTextOne -PasswordAsSecureString $Settings.SecureStringOne
 ConnectTo-Something -Credential $Settings.CredentialOne
 Get-SomeData -Credential $Settings.CredentialTwo
-
 
 Объекты SecureStrings и PSCredential используют DPAPI, таким образом хранилище, содержащее эти объекты, может быть использовано только на том компьютере, где оно было создано, и только под той пользовательской учетной записью, под которой оно было создано.
 </maml:para>

@@ -30,7 +30,7 @@ Set-sthVaultProperty function add the new properties or changes values of the ex
 Properties can be of three types: **PlainText**, **SecureString**, and **Credential**.
 
 You can use the **-PlainText**, **-SecureString**, and **-Credential** parameters to specify needed vaules.
-Each of these parameters accepts **HashTable** as an argument, which contains the Name-Vaule pairs.
+Each of these parameters accepts **HashTable** as an argument, which contains the Name-Value pairs.
 
 ## PARAMETERS
 
