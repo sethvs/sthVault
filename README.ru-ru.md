@@ -159,6 +159,8 @@ SecureStringOne                System.Security.SecureString
 SecureStringTwo                System.Security.SecureString
 ```
 
+---
+
 #### Пример 6: Получение свойств с определенными именами
 
 Команда получает содержимое хранилища с именем **TheVault**, возвращая только свойства с именами **PlainTextOne** и **SecureStringTwo**.
@@ -320,10 +322,12 @@ Remove-sthVaultProperty -VaultFilePath C:\Vaults\SomeVault.xml -PropertyName Pro
 Remove-sthVault -VaultName TheVault
 ```
 
+---
+
 #### Пример 2: Удаление файла хранилища, расположенного по указанному пути
 
 Команда удаляет файл хранилища с именем **SomeVault.xml**, расположенный в каталоге **C:\Vaults**.
 
-```powershell
+```
 Remove-sthVault -VaultFilePath C:\Vaults\SomeVault.xml
 ```
