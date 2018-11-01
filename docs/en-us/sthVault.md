@@ -8,21 +8,20 @@ Locale: en-us
 
 # sthVault Module
 ## Description
-{{Manually Enter Description Here}}
+This is a module, containing five functions for working with vaults.
 
 ## sthVault Cmdlets
 ### [Get-sthVault](Get-sthVault.md)
-{{Manually Enter Get-sthVault Description Here}}
+Gets existing vaults or displays content of the specified vault.
 
 ### [New-sthVault](New-sthVault.md)
-{{Manually Enter New-sthVault Description Here}}
-
-### [Remove-sthVault](Remove-sthVault.md)
-{{Manually Enter Remove-sthVault Description Here}}
-
-### [Remove-sthVaultProperty](Remove-sthVaultProperty.md)
-{{Manually Enter Remove-sthVaultProperty Description Here}}
+Creates the vault with the properties specified.
 
 ### [Set-sthVaultProperty](Set-sthVaultProperty.md)
-{{Manually Enter Set-sthVaultProperty Description Here}}
+Adds new properties or changes values of the existing properties in the vault.
 
+### [Remove-sthVaultProperty](Remove-sthVaultProperty.md)
+Removes specified properties from the vault.
+
+### [Remove-sthVault](Remove-sthVault.md)
+Removes the vault specified.
